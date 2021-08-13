@@ -4,8 +4,9 @@ Global WR := {"loc":{},"Flask":{},"Utility":{},"cdExpires":{},"perChar":{},"func
 WR.loc.pixel := {}, WR.loc.area := {}
 WR.data.Counts := {}
 for k, v in ["DetonateDelve", "Detonate", "Gui", "VendorAccept", "DivTrade", "DivItem"
-, "Wisdom", "Portal", "Scouring", "Chisel", "Alchemy", "Binding", "Chance", "Fusing"
-, "Transmutation", "Augmentation", "Alteration", "Vaal", "Jeweller", "Chromatic"
+, "Wisdom", "Portal", "Scouring", "Chisel", "Alchemy", "Chance", "Fusing", "Vaal"
+, "Transmutation", "Augmentation", "Alteration", "Jeweller", "Chromatic", "Binding"
+, "Harbinger", "Horizon", "Engineer", "Chaos", "Regal", "Simple", "Prime", "Awakened"
 , "OnMenu", "OnChar", "OnChat", "OnInventory", "OnStash", "OnVendor"
 , "OnDiv", "OnLeft", "OnDelveChart", "OnMetamorph", "OnLocker"]
 	WR.loc.pixel[v] := {"X":0,"Y":0}
@@ -39,7 +40,7 @@ for k, v in ["1","2","3","4","5","6","7","8","9","10"]
 {
 	WR.Utility[v] := {"Enable":"0", "OnCD":"0", "Condition":"1", "Key":v, "GroupCD":"5000", "CD":"5000"
 	, "Group":"u"A_Index, "Slot":A_Index, "QS":"0", "Type":"Utility"
-	, "MainAttack":"0", "SecondaryAttack":"0", "MainAttackRelease":"0", "SecondaryAttackRelease":"0", "Move":"0", "PopAll":"0", "Life":0, "ES":0, "Mana":0
+	, "MainAttackOnly":"0", "MainAttack":"0", "SecondaryAttack":"0", "MainAttackRelease":"0", "SecondaryAttackRelease":"0", "Move":"0", "PopAll":"0", "Life":0, "ES":0, "Mana":0
 	, "Icon":"", "IconShown":"0", "IconSearch":"1", "IconArea":{}, "IconVar0":"0", "IconVar1":"0"
 	, "Curse":"0", "Shock":"0", "Bleed":"0", "Freeze":"0", "Ignite":"0", "Poison":"0"}
 	WR.cdExpires.Utility[v] := A_TickCount

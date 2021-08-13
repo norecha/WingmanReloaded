@@ -1,4 +1,4 @@
-﻿readFromFile(){
+readFromFile(){
 	global
 	Thread, NoTimers, True    ;Critical
 
@@ -104,11 +104,13 @@
 	IniRead, YesInGameOverlay, %A_ScriptDir%\save\Settings.ini, General, YesInGameOverlay, 1
 	IniRead, YesBatchVendorBauble, %A_ScriptDir%\save\Settings.ini, General, YesBatchVendorBauble, 1
 	IniRead, YesBatchVendorGCP, %A_ScriptDir%\save\Settings.ini, General, YesBatchVendorGCP, 1
+	IniRead, BrickedWhenCorrupted, %A_ScriptDir%\save\Settings.ini, General, BrickedWhenCorrupted, 1
 	IniRead, YesOpenStackedDeck, %A_ScriptDir%\save\Settings.ini, General, YesOpenStackedDeck, 0
 	IniRead, YesSpecial5Link, %A_ScriptDir%\save\Settings.ini, General, YesSpecial5Link, 1
 	IniRead, YesVendorDumpItems, %A_ScriptDir%\save\Settings.ini, General, YesVendorDumpItems, 0
 	IniRead, HeistAlcNGo, %A_ScriptDir%\save\Settings.ini, General, HeistAlcNGo, 1
 	IniRead, MoveMapsToArea, %A_ScriptDir%\save\Settings.ini, General, MoveMapsToArea, 1
+	IniRead, YesIncludeFandSItem, %A_ScriptDir%\save\Settings.ini, General, YesIncludeFandSItem, 1
 	IniRead, EnableRestock, %A_ScriptDir%\save\Settings.ini, General, EnableRestock, 1
 
 	; Basic Crafting Settings
@@ -168,7 +170,12 @@
 	IniRead, CraftingMapMethod1, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, CraftingMapMethod1, Disable
 	IniRead, CraftingMapMethod2, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, CraftingMapMethod2, Disable
 	IniRead, CraftingMapMethod3, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, CraftingMapMethod3, Disable
-	;MODS
+	IniRead, MMapItemQuantity, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapItemQuantity, 1
+	IniRead, MMapItemRarity, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapItemRarity, 1
+	IniRead, MMapMonsterPackSize, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapMonsterPackSize, 1
+	IniRead, EnableMQQForMagicMap, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, EnableMQQForMagicMap, 0
+
+	;Crafting Map Mods
 	IniRead, ElementalReflect, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, ElementalReflect, 0
 	IniRead, PhysicalReflect, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, PhysicalReflect, 0
 	IniRead, NoRegen, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, NoRegen, 0
@@ -186,11 +193,12 @@
 	IniRead, PHReducedChanceToBlock, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, PHReducedChanceToBlock, 0
 	IniRead, PHLessArmour, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, PHLessArmour, 0
 	IniRead, PHLessAreaOfEffect, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, PHLessAreaOfEffect, 0
-	
-	IniRead, MMapItemQuantity, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapItemQuantity, 1
-	IniRead, MMapItemRarity, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapItemRarity, 1
-	IniRead, MMapMonsterPackSize, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapMonsterPackSize, 1
-	IniRead, EnableMQQForMagicMap, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, EnableMQQForMagicMap, 0
+
+	;Custom Crafting Map Mods
+	sDefaultCustomUndesirableMods := ArrayToString(DefaultCustomUndesirableMods)
+	IniRead, CustomUndesirableMods, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, CustomUndesirableMods , %sDefaultCustomUndesirableMods%
+	;Converting string to array
+	CustomUndesirableMods := StringToArray(CustomUndesirableMods)
 
 	;Automation Settings
 	IniRead, YesEnableAutomation, %A_ScriptDir%\save\Settings.ini, Automation Settings, YesEnableAutomation, 0
@@ -206,6 +214,7 @@
 	IniRead, StashTabGem, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabGem, 1
 	IniRead, StashTabGemQuality, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabGemQuality, 1
 	IniRead, StashTabFlaskQuality, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabFlaskQuality, 1
+	IniRead, StashTabFlaskAll, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabFlaskAll, 1																						   
 	IniRead, StashTabLinked, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabLinked, 1
 	IniRead, StashTabBrickedMaps, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabBrickedMaps, 1
 	IniRead, StashTabUnique, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabUnique, 1
@@ -223,6 +232,7 @@
 	IniRead, StashTabMetamorph, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabMetamorph, 1
 	IniRead, StashTabYesMetamorph, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesMetamorph, 0
 	IniRead, StashTabGemSupport, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabGemSupport, 1
+	IniRead, StashTabYesGemSupport, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesGemSupport, 0
 	IniRead, StashTabClusterJewel, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabClusterJewel, 1
 	IniRead, StashTabYesClusterJewel, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesClusterJewel, 1
 	IniRead, StashTabHeistGear, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabHeistGear, 1
@@ -237,6 +247,7 @@
 	IniRead, StashTabYesGemQuality, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesGemQuality, 1
 	IniRead, StashTabYesGemSupport, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesGemSupport, 1
 	IniRead, StashTabYesFlaskQuality, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesFlaskQuality, 1
+	IniRead, StashTabYesFlaskAll, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesFlaskAll, 1																								 
 	IniRead, StashTabYesLinked, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesLinked, 1
 	IniRead, StashTabYesUnique, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesUnique, 1
 	IniRead, StashTabYesUniqueRing, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesUniqueRing, 1
@@ -812,11 +823,13 @@ updateEverything:
 	IniWrite, %YesClickPortal%, %A_ScriptDir%\save\Settings.ini, General, YesClickPortal
 	IniWrite, %YesBatchVendorBauble%, %A_ScriptDir%\save\Settings.ini, General, YesBatchVendorBauble
 	IniWrite, %YesBatchVendorGCP%, %A_ScriptDir%\save\Settings.ini, General, YesBatchVendorGCP
+	IniWrite, %BrickedWhenCorrupted%, %A_ScriptDir%\save\Settings.ini, General, BrickedWhenCorrupted
 	IniWrite, %YesOpenStackedDeck%, %A_ScriptDir%\save\Settings.ini, General, YesOpenStackedDeck
 	IniWrite, %YesSpecial5Link%, %A_ScriptDir%\save\Settings.ini, General, YesSpecial5Link
 	IniWrite, %YesVendorDumpItems%, %A_ScriptDir%\save\Settings.ini, General, YesVendorDumpItems
 	IniWrite, %HeistAlcNGo%, %A_ScriptDir%\save\Settings.ini, General, HeistAlcNGo
 	IniWrite, %MoveMapsToArea%, %A_ScriptDir%\save\Settings.ini, General, MoveMapsToArea
+	IniWrite, %YesIncludeFandSItem%, %A_ScriptDir%\save\Settings.ini, General, YesIncludeFandSItem
 	IniWrite, %EnableRestock%, %A_ScriptDir%\save\Settings.ini, General, EnableRestock
 
 	; Overhead Health Bar
@@ -912,8 +925,12 @@ updateEverything:
 	IniWrite, %CraftingMapMethod1%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, CraftingMapMethod1
 	IniWrite, %CraftingMapMethod2%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, CraftingMapMethod2
 	IniWrite, %CraftingMapMethod3%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, CraftingMapMethod3
+	IniWrite, %MMapItemQuantity%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapItemQuantity
+	IniWrite, %MMapItemRarity%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapItemRarity
+	IniWrite, %MMapMonsterPackSize%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapMonsterPackSize
+	IniWrite, %EnableMQQForMagicMap%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, EnableMQQForMagicMap
 
-		;MODS
+	;Crafting Map Mods
 	IniWrite, %ElementalReflect%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, ElementalReflect
 	IniWrite, %PhysicalReflect%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, PhysicalReflect
 	IniWrite, %NoRegen%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, NoRegen
@@ -932,11 +949,10 @@ updateEverything:
 	IniWrite, %PHLessArmour%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, PHLessArmour
 	IniWrite, %PHLessAreaOfEffect%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, PHLessAreaOfEffect
 
-	IniWrite, %MMapItemQuantity%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapItemQuantity
-	IniWrite, %MMapItemRarity%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapItemRarity
-	IniWrite, %MMapMonsterPackSize%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapMonsterPackSize
-	IniWrite, %EnableMQQForMagicMap%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, EnableMQQForMagicMap
-	
+	;Custom Crafting Map Mods
+	sCustomUndesirableMods := ArrayToString(CustomUndesirableMods)
+	IniWrite, %sCustomUndesirableMods%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, CustomUndesirableMods
+
 	;Stash Tab Management
 	IniWrite, %StashTabCurrency%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabCurrency
 	IniWrite, %StashTabMap%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabMap
@@ -944,6 +960,7 @@ updateEverything:
 	IniWrite, %StashTabGem%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabGem
 	IniWrite, %StashTabGemQuality%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabGemQuality
 	IniWrite, %StashTabFlaskQuality%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabFlaskQuality
+	IniWrite, %StashTabFlaskAll%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabFlaskAll																						   
 	IniWrite, %StashTabLinked%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabLinked
 	IniWrite, %StashTabBrickedMaps%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabBrickedMaps
 	IniWrite, %StashTabUnique%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabUnique
@@ -956,6 +973,8 @@ updateEverything:
 	IniWrite, %StashTabDelirium%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabDelirium
 	IniWrite, %StashTabYesMetamorph%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesMetamorph
 	IniWrite, %StashTabDelve%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabDelve
+	IniWrite, %StashTabGemSupport%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabGemSupport
+	IniWrite, %StashTabYesGemSupport%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesGemSupport
 	IniWrite, %StashTabCrafting%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabCrafting
 	IniWrite, %StashTabProphecy%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabProphecy
 	IniWrite, %StashTabVeiled%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabVeiled
@@ -972,6 +991,7 @@ updateEverything:
 	IniWrite, %StashTabYesGemQuality%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesGemQuality
 	IniWrite, %StashTabYesGemSupport%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesGemSupport
 	IniWrite, %StashTabYesFlaskQuality%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesFlaskQuality
+	IniWrite, %StashTabYesFlaskAll%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesFlaskAll																								 
 	IniWrite, %StashTabYesLinked%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesLinked
 	IniWrite, %StashTabYesUnique%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesUnique
 	IniWrite, %StashTabYesUniqueRing%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabYesUniqueRing
@@ -1220,3 +1240,4 @@ Profile(args*){
 		GuiControl, ChooseString, ProfileMenu%Type% , %name%
 	Return
 }
+

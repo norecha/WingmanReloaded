@@ -51,7 +51,7 @@
 		Gui, Restock: Add, Radio, xs+5 ys+22 vRestockNormal gRestockSetValue, Normal slot
 		Gui, Restock: Add, Radio, xs+5 y+5 vRestockIgnored gRestockSetValue, Ignore this slot
 		Gui, Restock: Add, Radio, xs+5 y+5 vRestockRestock gRestockSetValue, Restock this slot
-		Gui, Restock: Add, DropDownList, xs+5 y+5 w180 vRestockRestockName gRestockSetValue, ||Wisdom|Portal|Alchemy|Alteration|Transmutation|Augmentation|Vaal|Chaos|Binding|Scouring|Chisel|Horizon|Simple|Prime|Awakened|Engineer|Regal
+		Gui, Restock: Add, DropDownList, xs+5 y+5 w180 vRestockRestockName gRestockSetValue, ||Wisdom|Portal|Alteration|Transmutation|Augmentation|Alchemy|Binding|Chaos|Vaal|Scouring|Chisel|Harbinger|Horizon|Engineer|Regal|Simple|Prime|Awakened
 		Gui, Restock: Font, Bold s9
 		Gui, Restock: Add, Text, xs+5 y+10, Min stack:
 		Gui, Restock: Font, s9
@@ -104,14 +104,14 @@
 		If (LoadedValues["RestockMin"] >= max - 2 || LoadedValues.RestockName = "") {
 			LoadedValues["RestockMin"] := max // 2
 		}
-		If (LoadedValues["RestockTo"] >= max || LoadedValues.RestockName = ""){
+		If (LoadedValues["RestockTo"] > max || LoadedValues.RestockName = ""){
 			LoadedValues["RestockTo"] := Round(max * (3/4))
 		}
 		If (LoadedValues["RestockMin"] >= LoadedValues["RestockMax"] - 1) {
 			LoadedValues["RestockMin"] := LoadedValues["RestockMax"] - 2
 		}
-		If (LoadedValues["RestockTo"] >= LoadedValues["RestockMax"]) {
-			LoadedValues["RestockTo"] := LoadedValues["RestockMax"] - 1
+		If (LoadedValues["RestockTo"] > LoadedValues["RestockMax"]) {
+			LoadedValues["RestockTo"] := LoadedValues["RestockMax"]
 		}
 		If (LoadedValues["RestockTo"] <= LoadedValues["RestockMin"]) {
 			LoadedValues["RestockTo"] := LoadedValues["RestockMin"] + 1

@@ -135,6 +135,9 @@
 	Global craftingBasesT6 := []
 	Global craftingBasesT7 := []
 	Global craftingBasesT8 := []
+	; Custom Undesirable Mods
+	Global CustomUndesirableMods := []
+	Global DefaultCustomUndesirableMods := ["Double Click to edit or delete this row"]
 	; Create Executable group for gameHotkey, IfWinActive
 	Global POEGameArr := ["PathOfExile.exe", "PathOfExile_x64.exe", "PathOfExileSteam.exe", "PathOfExile_x64Steam.exe", "PathOfExile_KG.exe", "PathOfExile_x64_KG.exe", "PathOfExile_x64EGS.exe", "PathOfExile_EGS.exe"]
 	for n, exe in POEGameArr
@@ -157,7 +160,11 @@
 	Global LootFilter := {}
 	Global BlackList
 	Global BlackList_Default := [[0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0]]
-	Global StackSizes := {"Wisdom":40,"Portal":40,"Alchemy":10,"Alteration":20,"Transmutation":40,"Augment":30,"Vaal":10,"Chaos":10,"Binding":20,"Scouring":30,"Chisel":20,"Horizon":20,"Simple":10,"Prime":10,"Awakened":10,"Engineer":20,"Regal":10}
+	Global StackSizes := {"Wisdom":40,"Portal":40,"Scouring":30,"Perandus":5000
+		,"Alteration":20,"Transmutation":40,"Augment":30,"Chance":20
+		,"Alchemy":10,"Binding":20,"Vaal":10,"Chisel":20
+		,"Harbinger":20,"Horizon":20,"Chaos":10,"Engineer":20,"Regal":10
+		,"Simple":10,"Prime":10,"Awakened":10,"Exalted":10,"Veiled":10}
 	Global YesClickPortal := True
 	Global MainAttackPressedActive,MainAttackLastRelease,SecondaryAttackPressedActive
 	Global ColorPicker_Group_Color, ColorPicker_Group_Color_Hex
@@ -166,9 +173,7 @@
 		, ColorPicker_Blue , ColorPicker_Blue_Edit, ColorPicker_Blue_Edit_Hex
 	Global FillMetamorph := {}
 	Global HeistGear := ["Torn Cloak","Tattered Cloak","Hooded Cloak","Whisper-woven Cloak"
-
 		,"Silver Brooch","Golden Brooch","Enamel Brooch","Foliate Brooch"
-
 		,"Simple Lockpick","Standard Lockpick","Fine Lockpick","Master Lockpick"
 		,"Leather Bracers","Studded Bracers","Runed Bracers","Steel Bracers"
 		,"Crude Sensing Charm","Fine Sensing Charm","Polished Sensing Charm","Thaumaturgical Sensing Charm"
@@ -179,7 +184,6 @@
 		,"Basic Disguise Kit","Theatre Disguise Kit","Espionage Disguise Kit","Regicide Disguise Kit"
 		,"Steel Drill","Flanged Drill"
 		,"Sulphur Blowtorch","Thaumetic Blowtorch"
-
 		,"Rough Sharpening Stone","Standard Sharpening Stone","Fine Sharpening Stone","Obsidian Sharpening Stone"
 		,"Flanged Arrowhead","Fragmenting Arrowhead","Hollowpoint Arrowhead","Precise Arrowhead"
 		,"Focal Stone","Conduit Line","Aggregator Charm","Burst Band"]
@@ -339,6 +343,8 @@
 		StashTabYesGemQuality = Enable to send Quality Gem items to the assigned tab on the left
 		StashTabFlaskQuality = Assign the Stash tab for Quality Flask items
 		StashTabYesFlaskQuality = Enable to send Quality Flask items to the assigned tab on the left
+		StashTabFlaskAll = Assign the Stash tab for Quality Flask items
+		StashTabYesFlaskAll = Enable to send unquality flasks to the assigned tab on the left
 		StashTabLinked = Assign the Stash tab for 6 or 5 Linked items
 		StashTabYesLinked = Enable to send 6 or 5 Linked items to the assigned tab on the left
 		StashTabBrickedMaps = Assign the Stash tab for maps that have unwanted mods on them
@@ -367,6 +373,7 @@
 		CraftingMapMethod2 = Select Crafting/ReCrafting Method for Range 2
 		CraftingMapMethod3 = Select Crafting/ReCrafting Method for Range 3
 		MoveMapsToArea = When finished map crafting, move all crafted maps to the map area`rThis will include MapPrep Items that were not in map area
+		YesIncludeFandSItem = Fracture and Synthesised itens will be considered as influenced items
 		ElementalReflect = Select this if your build can't run maps with this mod
 		PhysicalReflect = Select this if your build can't run maps with this mod
 		NoLeech = Select this if your build can't run maps with this mod
@@ -405,7 +412,6 @@
 		stashSuffixTab9 = Assign the Stash Tab for the 9th Stash Hotkey slot
 		hotkeyMainAttack = Bind the Main Attack for this Character
 		hotkeySecondaryAttack = Bind the Secondary Attack for this Character
-		BrickedWhenCorrupted = Enable this if you only want to consider a map 'bricked'`rwhen it's corrupted and has an undesired mod, otherwise,`rmaps of any tier with undesired mods will be flagged as 'bricked'
 		YesOpenStackedDeck = Open Stacked Decks while at the stash`rMoves to inventory respecting ignore slots
 		YesSpecial5Link = Giving 5 links a special type will prevent them from being vendored, expecially relevant for Jeweler's recipe items with 5 links.
 		)
@@ -422,10 +428,10 @@
 	Global CurrentLocation := ""
 	Global CLogFO
 ; ASCII converted strings of images
-	Global 1080_HealthBarStr := "|<1080 Overhead Health Bar>0x221415@0.99$106.Tzzzzzzzzzzzzzzzzu"
-		, 1440_HealthBarStr := "|<1440 Overhead Health Bar>0x190D11@0.99$138.TzzzzzzzzzzzzzzzzzzzzzyU"
+	Global 1080_HealthBarStr := "|<1080 Overhead Health Bar>0x201614@0.99$106.Tzzzzzzzzzzzzzzzzu"
+		, 1440_HealthBarStr := "|<1440 Overhead Health Bar>0x190D11@0.98$138.TzzzzzzzzzzzzzzzzzzzzzyU"
 		, 1440_HealthBarStr_Alt := "|<1440 OHB alt>*58$71.zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzw"
-		, 1050_HealthBarStr := "|<1050 Overhead Health Bar>0x221415@0.99$104.Tzzzzzzzzzzzzzzzzc"
+		, 1050_HealthBarStr := "|<1050 Overhead Health Bar>0x221415@0.98$104.Tzzzzzzzzzzzzzzzzc"
 		, OHBStrW := StrSplit(StrSplit(1080_HealthBarStr, "$")[2], ".")[1]
 
 		, 2160_SellItemsStr := "|<2160 Sell Items>0xE3D7A6@1.00$71.00000001k3U000000003U70003y000070C000AD0000C0Q000U60000Q0s003040000s1k006000001k3U00A000003U7000M000w070C000s007S0C0Q001s00MC0Q0s001s01UA0s1k001w020Q1k3U001w0A0M3U70001y0M0k70C0000y1rzUC0Q0000y3U00Q0s0000w7000s1k0000wC001k3U0000sQ003U700001ks0070C00003Uk00C0Q000071k00Q0s0000A3k20s1k0040k3k81k3U007z03zU3U70007s01y070C0000000000000000000000000000000000000000000000000000000000000000000000004"
@@ -582,7 +588,7 @@
 	Global YesPredictivePrice_Percent_Val := 100
 	Global HPerc := 100
 	Global GameX, GameY, GameW, GameH, mouseX, mouseY
-	Global OHB, OHBLHealthHex, OHBLManaHex, OHBLESHex, OHBLEBHex, OHBCheckHex
+	Global OHB
 	Global WinGuiX := 0
 	Global WinGuiY := 0
 	Global YesVendorDumpItems := 0
@@ -592,7 +598,8 @@
 	Global YesOpenStackedDeck := True
 	Global YesSpecial5Link := True
 	global EnableRestock:=True
-	global MoveMapsToArea:=True
+	Global MoveMapsToArea:=True
+	Global YesIncludeFandSItem := True
 
 
 	; Chaos Recipe
@@ -703,6 +710,7 @@
 	Global StashTabGemVaal := 1
 	Global StashTabGemQuality := 1
 	Global StashTabFlaskQuality := 1
+	Global StashTabFlaskAll := 1							 
 	Global StashTabLinked := 1
 	Global StashTabBrickedMaps := 1
 	Global StashTabInfluencedItem := 1
@@ -737,6 +745,7 @@
 	Global StashTabYesGemVaal := 1
 	Global StashTabYesGemQuality := 1
 	Global StashTabYesFlaskQuality := 1
+	Global StashTabYesFlaskAll := 1								
 	Global StashTabYesLinked := 1
 	Global StashTabYesBrickedMaps := 1
 	Global StashTabYesInfluencedItem := 1
