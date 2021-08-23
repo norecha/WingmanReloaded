@@ -9,6 +9,7 @@
 #Include, %A_ScriptDir%\lib\CLASS_ItemScan.ahk
 #Include, %A_ScriptDir%\lib\CLASS_Perfect.ahk
 #Include, %A_ScriptDir%\lib\CLASS_Progress_Slider.ahk
+#Include, %A_ScriptDir%\lib\CLASS_RefreshAffixes.ahk
 #Include, %A_ScriptDir%\lib\CLASS_SortByNum.ahk
 #Include, %A_ScriptDir%\lib\CLASS_Util.ahk
 #Include, %A_ScriptDir%\lib\ColorHex.ahk
@@ -51,7 +52,7 @@
 #Include, %A_ScriptDir%\lib\gui\UtilityMenu.ahk
 #Include, %A_ScriptDir%\lib\gui\WR_Menu.ahk
 #Include, %A_ScriptDir%\lib\gui\CustomCraftingBase.ahk
-#Include, %A_ScriptDir%\lib\gui\CustomUndesirableMods.ahk
+#Include, %A_ScriptDir%\lib\gui\CustomMapMods.ahk
 
 #Include, %A_ScriptDir%\lib\routine\AutoLevelGems.ahk
 #Include, %A_ScriptDir%\lib\routine\ChaosRecipe.ahk
