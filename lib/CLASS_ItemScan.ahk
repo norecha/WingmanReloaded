@@ -40,8 +40,15 @@
 					This.Data.Blocks.ClusterImplicit := SVal
 				Else If (SVal ~= "\(enchant\)$")
 					This.Data.Blocks.Enchant := SVal
+				Else If (SVal ~= "\(scourge\)$")
+					This.Data.Blocks.Scourge := SVal
 				Else If (SVal ~= " Item$") && !(SVal ~= "\w{1,} \w{1,} \w{1,} Item$")
 					This.Data.Blocks.Influence := SVal
+				Else If (SVal ~= "^Scourged$")
+				{
+					This.Prop.Scourged := True
+					This.Prop.SpecialType := "Scourged Item"
+				}
 				Else If (SVal ~= "^Corrupted$")
 					This.Prop.Corrupted := True
 				Else If (SVal ~= "^Abyss$")
@@ -60,6 +67,7 @@
 		This.MatchAffixesWithoutDoubleMods(This.Data.Blocks.Affix)
 		;This.MatchAffixes(This.Data.Blocks.Affix)
 		This.MatchAffixes(This.Data.Blocks.Enchant)
+		This.MatchAffixes(This.Data.Blocks.Scourge)
 		This.MatchAffixes(This.Data.Blocks.Implicit)
 		This.MatchAffixes(This.Data.Blocks.Influence)
 		This.MatchAffixes(This.Data.Blocks.TempleRooms)
@@ -835,8 +843,12 @@
 		;Stack size for anything with it
 		If (RegExMatch(This.Data.Blocks.Properties, "`am)^Stack Size: (\d.*)\/(\d.*)" ,RxMatch))
 		{
-			This.Prop.Stack_Size := RegExReplace(RxMatch1,",","") + 0
-			This.Prop.Stack_Max := RegExReplace(RxMatch2,",","") + 0
+			;EUA Layout
+			This.Prop.Stack_Max := RegExReplace(RxMatch2,"\.","")
+			This.Prop.Stack_Size := RegExReplace(RxMatch1,"\.","")
+			;US Layout
+			This.Prop.Stack_Size := RegExReplace(RxMatch1,",","")
+			This.Prop.Stack_Max := RegExReplace(RxMatch2,",","")
 		}
 		If (RegExMatch(This.Data.Blocks.Properties, "`am)^Seed Tier: "rxNum,RxMatch))
 		{
@@ -864,6 +876,7 @@
 		This.GetActualAllAttributesTier()
 		This.GetActualESTier()
 		This.GetActualIncESTier()
+		This.GetActualSpellSuppressTier()
 		If This.TopTierLightningResist()
 			This.Prop.TopTierLightningResist := 1
 		If This.TopTierFireResist()
@@ -1290,6 +1303,34 @@
 				break
 			}
 		}
+	}
+
+	GetActualSpellSuppressTier(){
+		ILvLList := []
+		AffixList := ["of Rebuttal","of Snuffing","of Revoking","of Abjuration","of Nullification"]
+		ILvLListBodyArmoursBootsGlovesHelmetsShields:= 	[46,57,68,76,86]
+		
+
+		if(indexOf(This.Prop.ItemClass,["Body Armours","Shields","Gloves","Boots","Helmets"])){
+			ILvLList := ILvLListBodyArmoursBootsGlovesHelmetsShields
+		}
+
+		for k,v in ILvLList
+		{
+			if ((This.Prop.ItemLevel >= v && This.Prop.ItemLevel < ILvLList[k+1]) || k == ILvLList.Length())
+			{
+				for ki,vi in AffixList
+				{
+					If (This.HasAffix(vi)){
+						value := k-ki+1
+						This.Prop["ActualTierSpellSuppress"] := value
+						break
+					}
+				}
+				break
+			}
+		}
+
 	}
 	TopTierLightningResist(){
 		If (This.Prop.ItemLevel < 13 && This.HasAffix("of the Cloud"))
@@ -3325,35 +3366,35 @@
 	MatchCraftingBases(){
 		If (This.Prop.Rarity_Digit == 4)
 			Return False
-		If(HasVal(craftingBasesT1,This.Prop.ItemBase))
+		If(HasVal(WR.CustomCraftingBases.CustomBases[1],This.Prop.ItemBase))
 		{
 			This.Prop.CraftingBase := "Atlas Base"
 		}
-		Else If(HasVal(craftingBasesT2,This.Prop.ItemBase))
+		Else If(HasVal(WR.CustomCraftingBases.CustomBases[2],This.Prop.ItemBase))
 		{
 			This.Prop.CraftingBase := "STR Base"
 		}
-		Else If(HasVal(craftingBasesT3,This.Prop.ItemBase))
+		Else If(HasVal(WR.CustomCraftingBases.CustomBases[3],This.Prop.ItemBase))
 		{
 			This.Prop.CraftingBase := "DEX Base"
 		}
-		Else If(HasVal(craftingBasesT4,This.Prop.ItemBase))
+		Else If(HasVal(WR.CustomCraftingBases.CustomBases[4],This.Prop.ItemBase))
 		{
 			This.Prop.CraftingBase := "INT Base"
 		}
-		Else If(HasVal(craftingBasesT5,This.Prop.ItemBase))
+		Else If(HasVal(WR.CustomCraftingBases.CustomBases[5],This.Prop.ItemBase))
 		{
 			This.Prop.CraftingBase := "Hybrid Base"
 		}
-		Else If(HasVal(craftingBasesT6,This.Prop.ItemBase))
+		Else If(HasVal(WR.CustomCraftingBases.CustomBases[6],This.Prop.ItemBase))
 		{
 			This.Prop.CraftingBase := "Jewel Base"
 		}
-		Else If(HasVal(craftingBasesT7,This.Prop.ItemBase))
+		Else If(HasVal(WR.CustomCraftingBases.CustomBases[7],This.Prop.ItemBase))
 		{
 			This.Prop.CraftingBase := "Abyss Jewel Base"
 		}
-		Else If(HasVal(craftingBasesT8,This.Prop.ItemBase))
+		Else If(HasVal(WR.CustomCraftingBases.CustomBases[8],This.Prop.ItemBase))
 		{
 			This.Prop.CraftingBase := "Jewellery Base"
 		}
