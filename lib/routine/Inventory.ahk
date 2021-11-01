@@ -124,11 +124,11 @@ SearchStash()
 ShooMouse()
 {
 	MouseGetPos Checkx, Checky
-	If (((Checkx<InventoryGridX[12])&&(Checkx>InventoryGridX[1]))&&((Checky<InventoryGridY[5])&&(Checky>InventoryGridY[1]))){
+	If (((Checkx<InventoryGridX[12]+10)&&(Checkx>InventoryGridX[1]-10))&&((Checky<InventoryGridY[5]+10)&&(Checky>InventoryGridY[1]-10))){
 		Random, RX, (A_ScreenWidth*0.45), (A_ScreenWidth*0.55)
 		Random, RY, (A_ScreenHeight*0.45), (A_ScreenHeight*0.55)
 		MouseMove, RX, RY, 0
-		Sleep, 105*Latency
+		Sleep, 135*Latency
 	}
 }
 ; ClearNotifications - Get rid of overlay messages if any are present
@@ -220,7 +220,7 @@ VendorRoutine()
 			{
 				If Item.MatchLootFilter()
 					Continue
-				If (Item.Prop.RarityCurrency && Item.Prop.ItemClass != "Heist Target")
+				If (Item.Prop.RarityCurrency && !Item.Prop.Vendorable)
 					Continue
 				If ( Item.Prop.Flask && Item.Prop.Quality > 0 )
 				{
@@ -245,10 +245,11 @@ VendorRoutine()
 					SortGem.Push({"C":C,"R":R,"Q":Q})
 					Continue
 				}
-				If (Item.Prop.StashReturnVal && !Item.Prop.DumpTabItem)
-				|| (Item.Prop.StashReturnVal && (!YesVendorDumpItems && Item.Prop.DumpTabItem))
+				If ((Item.Prop.StashReturnVal && !Item.Prop.DumpTabItem)
+				|| (Item.Prop.StashReturnVal && (!YesVendorDumpItems && Item.Prop.DumpTabItem)))
+				&& !(Item.Prop.Vendorable)
 					Continue
-				If ( Item.Prop.SpecialType="" || Item.Prop.ItemClass = "Heist Target" )
+				If ( Item.Prop.SpecialType="" || Item.Prop.Vendorable )
 				{
 					CtrlClick(Grid.X,Grid.Y)
 					If !(Item.Prop.Chromatic || Item.Prop.Jeweler)
@@ -302,7 +303,7 @@ VendorRoutine()
 		If (YesEnableAutoSellConfirmation || (!VendoredItems && YesEnableAutoSellConfirmationSafe))
 		{
 			RandomSleep(90,120)
-			LeftClick(WR.loc.pixel.VendorAccept.X,WR.loc.pixel.VendorAccept.Y)
+			LeftClick(WR.loc.pixel.VendorAccept.X,WR.loc.pixel.VendorAccept.Y + (CurrentLocation = "The Rogue harbour"?Round(GameH/(1080/50)):0))
 			RandomSleep(90,120)
 			ContinueFlag := True
 		}
@@ -310,7 +311,7 @@ VendorRoutine()
 		{
 			CheckTime("Seconds",120,"VendorUI",A_Now)
 			If YesEnableAutoSellConfirmationSafe
-				MouseMove, WR.loc.pixel.VendorAccept.X, WR.loc.pixel.VendorAccept.Y
+				MouseMove, WR.loc.pixel.VendorAccept.X, WR.loc.pixel.VendorAccept.Y + (CurrentLocation = "The Rogue harbour"?Round(GameH/(1080/50)):0)
 			While (!CheckTime("Seconds",120,"VendorUI"))
 			{
 				If (YesController)
@@ -364,7 +365,7 @@ VendorRoutine()
 }
 ; Build Empty Grid List
 EmptyGrid(){
-	ShooMouse(),GuiStatus()
+	ShooMouse(), FindText.ScreenShot(GameX,GameY,GameX+GameW,GameY+GameH)
 	EmptySlots := {}
 	For C, GridX in InventoryGridX {
 		For R, GridY in InventoryGridY {
@@ -638,6 +639,11 @@ StashRoutine()
 			GuiStatus()
 			If SearchVendor()
 				VendorRoutine()
+		} Else If (FirstAutomationSetting == "Search Vendor") {
+			RandomSleep(90,120)
+			SendHotkey(hotkeyCloseAllUI)
+			RandomSleep(90,120)
+			GuiStatus()
 		}
 	}
 	Return
@@ -703,7 +709,7 @@ SearchVendor()
 		Else If (Town = "Mines")
 		{
 			LeftClick(GameX + GameW//3, GameY + GameH//5)
-			Sleep, 800
+			Sleep, 1300
 			; LeftClick(GameX + (GameW//2) - 10 , GameY + (GameH//2) - 30 )
 		}
 		Else If (Town = "The Rogue Harbour")
