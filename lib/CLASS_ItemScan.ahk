@@ -913,6 +913,8 @@
 		This.GetActualIncPhysicalDamageTier()
 		;ACC
 		This.GetActualAccuracyTier()
+		;Caster Mods
+		This.GetActualSpellDamageModsTier()
 
 		If This.TopTierLightningResist()
 			This.Prop.TopTierLightningResist := 1
@@ -1778,17 +1780,11 @@
 				break
 			}
 		}
-	}	
-	;Review Item Scan Affix content in () after affix
+	}
 	GetActualSpellSuppressTier(){
-		ILvLList := []
+		ILvLList := [46,57,68,76,86]
 		AffixList := ["of Rebuttal","of Snuffing","of Revoking","of Abjuration","of Nullification"]
-		ILvLListBodyArmoursBootsGlovesHelmetsShields:= 	[46,57,68,76,86]
-		
 
-		if(indexOf(This.Prop.ItemClass,["Body Armours","Shields","Gloves","Boots","Helmets"])){
-			ILvLList := ILvLListBodyArmoursBootsGlovesHelmetsShields
-		}
 
 		for k,v in ILvLList
 		{
@@ -1796,7 +1792,7 @@
 			{
 				for ki,vi in AffixList
 				{
-					If (This.HasAffix(vi)){
+					If (This.HasAffix(vi) && This.Affix["#% chance to Suppress Spell Damage"]){
 						value := k-ki+1
 						This.Prop["ActualTierSpellSuppress"] := value
 						break
@@ -2092,6 +2088,77 @@
 				break
 			}
 		}
+	}
+	;Spell Mods
+	GetActualSpellDamageModsTier(){
+		loop, 9
+		{
+			if (A_Index == 1)
+			{
+				Name:= "INCSpelDamage"
+				AffixName:= "#% increased Spell Damage"
+				ILvLList := [2,11,23,35,46,58,64,84]
+				AffixList := ["Apprentice's","Adept's","Scholar's","Professor's","Occultist's","Incanter's","Glyphic","Runic"]
+			}else if (A_Index == 2){
+				Name:= "INCFireDamage"
+				AffixName:= "#% increased Fire Damage"
+				ILvLList := [2,11,23,35,46,58,64,84]
+				AffixList := ["Searing","Sizzling","Blistering","Cauterising","Volcanic","Magmatic","Pyroclastic","Xoph's"]
+			}else if (A_Index == 3){
+				Name:="INCColdDamage"
+				AffixName:= "#% increased Cold Damage"
+				ILvLList := [2,11,23,35,46,58,64,84]
+				AffixList := ["Bitter","Biting","Alpine","Snowy","Hailing","Crystalline","Cryomancer's","Tul's"]	
+			}else if (A_Index == 4){
+				Name:="INCLightningDamage"
+				AffixName:= "#% increased Lightning Damage"
+				ILvLList := [2,11,23,35,46,58,64,84]
+				AffixList := ["Charged","Hissing","Bolting","Coursing","Striking","Smiting","Ionising","Esh's"]
+			}else if (A_Index == 5){
+				Name:="CastSpeed"
+				AffixName:= "#% increased Cast Speed"
+				ILvLList := [2,15,30,40,55,72,83]
+				AffixList := ["of Talent","of Nimbleness","of Expertise","of Legerdemain","of Prestidigitation","of Sortilege","of Finesse"]
+			}else if (A_Index == 6){
+				Name:="ChaosDOT"
+				AffixName:= "#% to Chaos Damage over Time Multiplier"
+				ILvLList := [4,12,36,64,78]
+				AffixList := ["of Waning","of Wasting","of Deteriorating","of Atrophying","of Disintegrating"]
+			}else if (A_Index == 7){
+				Name:="ColdDOT"
+				AffixName:= "#% to Cold Damage over Time Multiplier"
+				ILvLList := [4,12,36,64,78]
+				AffixList := ["of the Inclement","of the Bleak","of the Boreal","of the Gelid","of Heartstopping"]
+			}else if (A_Index == 8){
+				Name:="FireDOT"
+				AffixName:= "#% to Fire Damage over Time Multiplier"
+				ILvLList := [4,12,36,64,78]
+				AffixList := ["of the Earnest","of the Fervid","of the Ardent","of the Zealous","of the Fanatical"]
+			}else if (A_Index == 9){
+				Name:="PhysicalDOT"
+				AffixName:= "#% to Physical Damage over Time Multiplier"
+				ILvLList := [4,12,36,64,78]
+				AffixList := ["of Seeping","of Spilling","of Phlebotomising","of Hemorrhaging","of Exsanguinating"]
+			}
+		
+			for k,v in ILvLList
+			{
+				if ((This.Prop.ItemLevel >= v && This.Prop.ItemLevel < ILvLList[k+1]) || k == ILvLList.Length())
+				{
+					for ki,vi in AffixList
+					{
+						If (This.HasAffix(vi) && This.Affix[AffixName]){
+							value := k-ki+1
+							This.Prop["ActualTier"Name] := value
+							break
+						}
+					}
+					break
+				}
+			}
+
+		}
+		
 	}
 	TopTierLightningResist(){
 		If (This.Prop.ItemLevel < 13 && This.HasAffix("of the Cloud"))
@@ -2578,6 +2645,8 @@
 			line :=  RegExReplace(A_LoopField, rxNum "\(" rxNum "-" rxNum "\)", "$1")
 			line :=  RegExReplace(line, rxNum "\(-" rxNum "--" rxNum "\)", "$1")
 			line :=  RegExReplace(line,  " . Unscalable Value" , "")
+			;Fix Extra Text from Spell Suppress Mods
+			line :=  RegExReplace(line,  "\(50% of Damage from Suppressed Hits and Ailments they inflict is prevented\)" , "")
 			key := This.Standardize(line)
 			If (vals := This.MatchLine(line))
 			{
@@ -3022,6 +3091,31 @@
 					This.Prop.ItemBase := v["name"]
 					This.Prop.DropLevel := v["drop_level"]
 
+
+					If (This.Prop.Rating_Armour || This.Prop.Rating_EnergyShield || This.Prop.Rating_Evasion){
+						tally := total := 0
+						If This.Prop.Rating_Armour {
+							tally++
+							val := This.Perc(This.Prop.Rating_Armour,[v.properties.armour.min,v.properties.armour.max])
+							total += val
+							This.Prop.Rating_Armour_Percent := round(val,2)
+						}
+						If This.Prop.Rating_EnergyShield {
+							tally++
+							val := This.Perc(This.Prop.Rating_EnergyShield,[v.properties.energy_shield.min,v.properties.energy_shield.max])
+							total += val
+							This.Prop.Rating_EnergyShield_Percent := round(val,2)
+						}
+						If This.Prop.Rating_Evasion {
+							tally++
+							val := This.Perc(This.Prop.Rating_Evasion,[v.properties.evasion.min,v.properties.evasion.max])
+							total += val
+							This.Prop.Rating_Evasion_Percent := round(val,2)
+						}
+						This.Prop.Rating_Percent := round(total/tally,2)
+						tally := total := val := ""
+					}
+
 					If InStr(This.Prop.ItemClass, "Rings")
 						This.Prop.Ring := True
 					If InStr(This.Prop.ItemClass, "Amulets")
@@ -3150,7 +3244,7 @@
 			If This.MatchNinjaDB("Map","ItemBase","name")
 				Return
 		}
-		If (This.Prop.ItemLevel >= 82 && This.Prop.Influence != "")
+		If (This.Prop.ItemLevel >= 82 && This.Prop.Influence != "" && !This.Prop.RarityUnique)
 		{
 			For k, v in Ninja.BaseType
 			{
