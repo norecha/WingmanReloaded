@@ -20,8 +20,10 @@
 					This.Data.Blocks.NamePlate := SVal, This.Prop.IsItem := true
 				Else If (SVal ~= "{ Prefix" || SVal ~= "{ Suffix" || SVal ~= "{ Unique" )
 					This.Data.Blocks.Affix := SVal
-				Else If (SVal ~= " \(enchant\)$")
+				Else If (SVal ~= " \(enchant\)$"){
+					This.Prop.Enchanted := True
 					This.Data.Blocks.Enchant := SVal
+				}
 				Else If (SVal ~= "Open Rooms:"){
 					temp := StrSplit(SVal,"Obstructed Rooms:")
 					This.Data.Blocks.TempleRooms := StrSplit(temp.1,"Open Rooms:").2
@@ -34,18 +36,21 @@
 			{
 				If (SVal ~= "\.$" || SVal ~= "\?$" || SVal ~= """$")
 					This.Data.Blocks.FlavorText := SVal
-				Else If (SVal ~= "\(implicit\)$")
+				Else If (SVal ~= "\(implicit\)$"){
+					This.Prop.HasImplicit := True
 					This.Data.Blocks.Implicit := SVal
+				}
 				Else If (SVal ~= "Adds \d{1,} Passive Skills (enchant)")
 					This.Data.Blocks.ClusterImplicit := SVal
-				Else If (SVal ~= "\(enchant\)$")
+				Else If (SVal ~= "\(enchant\)$"){
+					This.Prop.HasEnchant := True
 					This.Data.Blocks.Enchant := SVal
+				}
 				Else If (SVal ~= "\(scourge\)$")
 					This.Data.Blocks.Scourge := SVal
 				Else If (SVal ~= " Item$") && !(SVal ~= "\w{1,} \w{1,} \w{1,} Item$")
 					This.Data.Blocks.Influence := SVal
-				Else If (SVal ~= "^Scourged$")
-				{
+				Else If (SVal ~= "^Scourged$") {
 					This.Prop.Scourged := True
 				}
 				Else If (SVal ~= "^Corrupted$")
@@ -80,12 +85,23 @@
 		This.MatchCraftingBases()
 		This.MatchBase2Slot()
 		This.MatchChaosRegal()
-		This.Prop.StashChaosItem := This.StashChaosRecipe(False)
+		If (This.Prop.SlotType && ChaosRecipeEnableFunction)
+			This.Prop.StashChaosItem := This.StashChaosRecipe(False)
 		If (This.Prop.Rarity_Digit = 3 && !This.Affix.Unidentified && (StashTabYesPredictive && YesPredictivePrice != "Off")  ){
 			This.Prop.PredictPrice := This.PredictPrice()
 		}
 		This.Prop.StashReturnVal := This.MatchStashManagement(false)
 		; This.FuckingSugoiFreeMate()
+		If (This.Prop.ClusterJewel) {
+			This.Prop.ClusterSkills := 0
+			This.Prop.ClusterSmall := 0
+			For k, v in This.Affix {
+				If InStr(k, "# Added Passive Skill is")
+					This.Prop.ClusterSkills += 1
+				If InStr(k, "Added Small Passive Skills also grant:")
+					This.Prop.ClusterSmall += 1
+			}
+		}
 	}
 	; PredictPrice - Evaluate results from TradeFunc_DoPoePricesRequest
 	PredictPrice(Switch:="")
@@ -170,6 +186,9 @@
 				} Else If RegExMatch(v, "\{ Prefix Modifier ""(.+)"" . (.*) \}", rxm ) {
 					This.Data.AffixNames.Prefix.Push({Name:rxm1,Tier:1,Tags:(rxm2?rxm2:"")})
 					This.Affix[rxm1] := This.Modifier[rxm1] := 1
+				} Else If RegExMatch(v, "\{ Prefix Modifier ""(.+)"" \}", rxm ) {
+					This.Data.AffixNames.Prefix.Push({Name:rxm1,Tier:1,Tags:""})
+					This.Affix[rxm1] := This.Modifier[rxm1] := 1
 				}
 				This.Prop.PrefixCount++, This.Prop.AffixCount++
 			} Else If (v ~= "\{ Suffix Modifier") {
@@ -178,6 +197,9 @@
 					This.Affix[rxm1] := This.Modifier[rxm1] := 1
 				} Else If RegExMatch(v, "\{ Suffix Modifier ""(.+)"" . (.*) \}", rxm ) {
 					This.Data.AffixNames.Suffix.Push({Name:rxm1,Tier:1,Tags:(rxm2?rxm2:"")})
+					This.Affix[rxm1] := This.Modifier[rxm1] := 1
+				} Else If RegExMatch(v, "\{ Suffix Modifier ""(.+)"" \}", rxm ) {
+					This.Data.AffixNames.Suffix.Push({Name:rxm1,Tier:1,Tags:""})
 					This.Affix[rxm1] := This.Modifier[rxm1] := 1
 				}
 				This.Prop.SuffixCount++, This.Prop.AffixCount++
@@ -233,6 +255,8 @@
 			}
 			If (This.Prop.Rarity_Digit < 3)
 				This.Prop.OpenAffix -= 4
+			Else If (This.Prop.ItemClass ~= "Jewels" && This.Prop.Rarity_Digit = 3)
+				This.Prop.OpenAffix -= 2
 			; 4 Lines in NamePlate => Rarity / Item Name/ Item Base
 			If (RegExMatch(This.Data.Blocks.NamePlate, "`r`n.+`r`n(.+)`r`n(.+)",RxMatch))
 			{
@@ -267,7 +291,12 @@
 				This.Prop.MiscMapItem := True
 				This.Prop.SpecialType := "Misc Map Item"
 			}
-			If (This.Prop.ItemClass = "Maps")
+			Else If (This.Prop.ItemClass = "Atlas Region Upgrade Items")
+			{
+				This.Prop.MiscMapItem := True
+				This.Prop.SpecialType := "Atlas Watchstone"
+			}
+			Else If (This.Prop.ItemClass = "Maps")
 			{
 				This.Prop.IsMap := True
 				; Deal with Blighted Map
@@ -281,7 +310,7 @@
 					This.Prop.SpecialType := "Map"
 				}
 			}
-			If (This.Prop.ItemBase ~= "Invitation:" && This.Data.Blocks.FlavorText ~= "Map Device")
+			Else If (This.Prop.ItemBase ~= "Invitation:" && This.Data.Blocks.FlavorText ~= "Map Device")
 			{
 				This.Prop.SpecialType := "Invitation Map"
 			}
@@ -823,6 +852,12 @@
 		{
 			This.Prop.Veiled := True
 			This.Prop.SpecialType := "Veiled Item"
+			For k, v in This.Modifier {
+				If RegExMatch(k, "(.*) Veiled", rxm) {
+					This.Prop.VeiledType := rxm1
+					Break
+				}
+			}
 		}
 		Else
 		{
@@ -2739,7 +2774,7 @@
 		; These lines remove the extra line created by "additional information bubbles"
 		If (content ~= "\n\(")
 			content := RegExReplace(content, "\n\(", "(")
-		content := RegExReplace(content,"\(\w+ \w+ [\r\n\w\%\d,\: ]*\)", "")
+		content := RegExReplace(content," ?\(\w+ \w+ [\r\n\w\%\d,\: ]*\)( \(enchant\))?", "")
 		; Do Stuff with info
 		Loop, Parse,% content, `r`n  ; , `r
 		{
