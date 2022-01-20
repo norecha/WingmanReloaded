@@ -10,7 +10,7 @@ for k, v in ["DetonateDelve", "Detonate", "Gui", "VendorAccept", "DivTrade", "Di
 , "Transmutation", "Augmentation", "Alteration", "Jeweller", "Chromatic", "Binding"
 , "Harbinger", "Horizon", "Engineer", "Chaos", "Regal", "Simple", "Prime", "Awakened"
 , "OnMenu", "OnChar", "OnChat", "OnInventory", "OnStash", "OnVendor", "OnVendorHeist"
-, "OnDiv", "OnLeft", "OnDelveChart", "OnMetamorph", "OnLocker", "Custom"]
+, "OnDiv", "OnLeft", "OnDelveChart", "OnMetamorph", "OnLocker"]
 	WR.loc.pixel[v] := {"X":0,"Y":0}
 for k, v in []
 	WR.loc.area[v] := {"X1":0,"Y1":0,"X2":0,"Y2":0}
@@ -79,93 +79,7 @@ WR.String.General:={"OHB":"|<OHB_Bar>0x241814@0.99$106.Tzzzzzzzzzzzzzzzzu"
 	,"Xbutton":"|<1080 X Button>*43$12.0307sDwSDwDs7k7sDwSSwTsDk7U"
 	,"HeistLocker":"|<1080 Locker>*90$59.7zzzzzzzzzDzzzzzzzzyTyTyTDTzzwzkDk4QE60tz6D6AlnANnwSASt7bslbtwNzkTDlXDnsnzVy3XCTblbz1w70QzDX7yFty1tyDCDwXnwFnaASCNXbslUA1y1nX0llzyTzDzzzzy"}
 
-
-WR.CustomCraftingBases.Default := []
-WR.CustomCraftingBases.Default[1]:=["Apothecary's Gloves"
-		,"Blessed Boots"
-		,"Fingerless Silk Gloves"
-		,"Gripped Gloves"
-		,"Spiked Gloves"
-		,"Two-Toned Boots"
-		,"Convoking Wand"
-		,"Bone Helmet"
-		,"Artillery Quiver"
-		,"Marble Amulet"
-		,"Seaglass Amulet"
-		,"Blue Pearl Amulet"
-		,"Iolite Ring"
-		,"Vanguard Belt"
-		,"Crystal Belt"
-		,"Opal Ring"
-		,"Steel Ring"
-		,"Stygian Vise"
-		,"Vermillion Ring"
-		,"Grasping Mail"
-		,"Sacrificial Garb"
-		,"Brimstone Treads"
-		,"Stormrider Boots"
-		,"Dreamquest Slippers"
-		,"Debilitation Gauntlets"
-		,"Sinistral Gloves"
-		,"Nexus Gloves"
-		,"Penitent Mask"
-		,"Blizzard Crown"
-		,"Archdemon Crown"
-		,"Heat-attuned Tower Shield"
-		,"Cold-attuned Buckle"
-		,"Transfer-attuned Spirit Shield"
-		,"Penitent Mask"]
-
-WR.CustomCraftingBases.Default[2]:=["Glorious Plate"
-		,"Astral Plate"
-		,"Titan Greaves"
-		,"Titan Gauntlets"
-		,"Royal Burgonet"
-		,"Eternal Burgonet"
-		,"Pinnacle Tower Shield"]
-
-WR.CustomCraftingBases.Default[3]:=["Assassin's Garb"
-		,"Zodiac Leather"
-		,"Slink Boots"
-		,"Slink Gloves"
-		,"Lion Pelt"
-		,"Imperial Buckler"]
-
-WR.CustomCraftingBases.Default[4]:=["Vaal Regalia"
-		,"Sorcerer Boots"
-		,"Sorcerer Gloves"
-		,"Hubris Circlet"
-		,"Titanium Spirit Shield"
-		,"Harmonic Spirit Shield"]
-
-WR.CustomCraftingBases.Default[5]:=["Triumphant Lamellar"
-		,"Dragonscale Gauntlets"
-		,"Archon Kite Shield"
-		,"Murder Mitts"
-		,"Crusader Gloves"]
-
-WR.CustomCraftingBases.Default[6]:=["Cobalt Jewel"
-		, "Viridian Jewel"
-		, "Crimson Jewel"]
-
-WR.CustomCraftingBases.Default[7]:=["Searching Eye Jewel"
-		, "Murderous Eye Jewel"
-		, "Ghastly Eye Jewel"]
-
-WR.CustomCraftingBases.Default[8]:=["Onyx Amulet"
-		, "Turquoise Amulet"
-		, "Citrine Amulet"
-		, "Agate Amulet"
-		, "Prismatic Ring"
-		, "Two-Stone Ring"
-		, "Diamond Ring"]
-
-
-WR.CustomCraftingBases.CustomBases:=[]
-for k,v in [1,2,3,4,5,6,7,8]
-{
-	WR.CustomCraftingBases.CustomBases[k]:=WR.CustomCraftingBases.Default[k].Clone()
-}
+WR.CustomCraftingBases.Bases := []
 
 WR.CustomMapMods.CustomMods := [{"Map Modifier":"Monsters have #% chance to Avoid Elemental Ailments","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters have a #% chance to avoid Poison, Blind, and Bleeding","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters reflect #% of Elemental Damage","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters reflect #% of Physical Damage","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players cannot Regenerate Life, Mana or Energy Shield","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Cannot Leech from Monsters","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"-#% maximum Player Resistances","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters fire # additional Projectiles","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters deal #% extra Physical Damage as Fire","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters deal #% extra Physical Damage as Cold","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters deal #% extra Physical Damage as Lightning","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters have #% increased Critical Strike Chance","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters' skills Chain # additional times","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players have #% less Recovery Rate of Life and Energy Shield","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Player chance to Dodge is Unlucky","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters have #% increased Accuracy Rating","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players have #% reduced Chance to Block","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players have #% less Armour","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players have #% less Area of Effect","Mod Type":"Impossible","Weight":"100"}]
 
