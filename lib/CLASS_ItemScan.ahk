@@ -807,7 +807,7 @@
 		;End Prop Block Parser for Maps
 		
 		; Start Prop Block Parser for Heist
-		If indexOf(This.Prop.ItemClass, ["Contract","Blueprint"]) {
+		If indexOf(This.Prop.ItemClass, ["Contracts","Blueprints"]) {
 			If (RegExMatch(This.Data.Blocks.Properties, "`am)^Heist Target: (.*)",RxMatch))
 				This.Prop.Heist_Target := RxMatch1
 			If (RegExMatch(This.Data.Blocks.Properties, "`am)^Client: (.*)",RxMatch))
@@ -832,8 +832,12 @@
 				This.Prop.Heist_RewardRoomsRevealed := RxMatch1, This.Prop.Heist_RewardRoomsRevealedMax := RxMatch2
 			For k, job in ["Brute Force","Agility","Perception","Demolition","Counter-Thaumaturgy","Trap Disarmament","Deception","Engineering","Lockpicking"] {
 				If (RegExMatch(This.Data.Blocks.Properties, "`am)^Requires " job " \(Level " rxNum "\)",RxMatch)) {
-					This.Prop["Heist_Requires" job ] := RxMatch1
+					This.Prop["Heist_Requires_" job ] := RxMatch1
+					If (This.Prop.ItemClass == "Contracts"){
+						This.Prop["Heist_Contract_Type"]  := job
+					}
 				}
+				
 			}
 		}
 		; End Prop Block Parser for Heist
@@ -3924,9 +3928,9 @@
 				if (v.BaseName == This.Prop.ItemBase && ((YesStashBasesAboveIlvl && This.Prop.ItemLevel >= StashBasesAboveIlvl)|| !YesStashBasesAboveIlvl))
 				{
 					This.Prop.CraftingBase := v.BaseName
-					if (v.ILvL < This.Prop.ItemLevel && YesCraftingBaseAutoILvLUP){
+					if (v.ILvL <= This.Prop.ItemLevel && YesCraftingBaseAutoILvLUP){
 						This.Prop.WantedCraftingBase := True
-						if(This.Prop.ItemLevel < 85){
+						if(This.Prop.ItemLevel < 85 && v.ILvL < This.Prop.ItemLevel){
 							v.ILvL := This.Prop.ItemLevel
 							update := True	
 						}
