@@ -1,13 +1,15 @@
 GitHub/
-save/
 temp/
 logs/
 backup/
 data/Ninja.json
 data/Source.zip
 data/leagues.json
-.vscode/settings.json
 data/PoE.Watch_PerfectUnique.json
 .history
 .idea
 .vs
+.vscode
+
+# SIZDIRMA COOKIE VS ONEMLI DOSYALARI
+save/Cookie.json

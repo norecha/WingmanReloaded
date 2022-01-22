@@ -1,0 +1,180 @@
+﻿{
+  "CustomBases": [
+    [
+      "Apothecary's Gloves",
+      "Blessed Boots",
+      "Fingerless Silk Gloves",
+      "Gripped Gloves",
+      "Spiked Gloves",
+      "Two-Toned Boots",
+      "Convoking Wand",
+      "Bone Helmet",
+      "Artillery Quiver",
+      "Marble Amulet",
+      "Seaglass Amulet",
+      "Blue Pearl Amulet",
+      "Iolite Ring",
+      "Vanguard Belt",
+      "Crystal Belt",
+      "Opal Ring",
+      "Steel Ring",
+      "Stygian Vise",
+      "Vermillion Ring",
+      "Grasping Mail",
+      "Sacrificial Garb",
+      "Brimstone Treads",
+      "Stormrider Boots",
+      "Dreamquest Slippers",
+      "Debilitation Gauntlets",
+      "Sinistral Gloves",
+      "Nexus Gloves",
+      "Penitent Mask",
+      "Blizzard Crown",
+      "Archdemon Crown",
+      "Heat-attuned Tower Shield",
+      "Cold-attuned Buckle",
+      "Transfer-attuned Spirit Shield",
+      "Penitent Mask"
+    ],
+    [
+      "Glorious Plate",
+      "Astral Plate",
+      "Titan Greaves",
+      "Titan Gauntlets",
+      "Royal Burgonet",
+      "Eternal Burgonet",
+      "Pinnacle Tower Shield"
+    ],
+    [
+      "Assassin's Garb",
+      "Zodiac Leather",
+      "Slink Boots",
+      "Slink Gloves",
+      "Lion Pelt",
+      "Imperial Buckler"
+    ],
+    [
+      "Vaal Regalia",
+      "Sorcerer Boots",
+      "Sorcerer Gloves",
+      "Hubris Circlet",
+      "Titanium Spirit Shield",
+      "Harmonic Spirit Shield"
+    ],
+    [
+      "Triumphant Lamellar",
+      "Dragonscale Gauntlets",
+      "Archon Kite Shield",
+      "Murder Mitts",
+      "Crusader Gloves"
+    ],
+    [
+      "Cobalt Jewel",
+      "Viridian Jewel",
+      "Crimson Jewel"
+    ],
+    [
+      "Searching Eye Jewel",
+      "Murderous Eye Jewel",
+      "Ghastly Eye Jewel"
+    ],
+    [
+      "Onyx Amulet",
+      "Turquoise Amulet",
+      "Citrine Amulet",
+      "Agate Amulet",
+      "Prismatic Ring",
+      "Two-Stone Ring",
+      "Diamond Ring"
+    ]
+  ],
+  "Default": [
+    [
+      "Apothecary's Gloves",
+      "Blessed Boots",
+      "Fingerless Silk Gloves",
+      "Gripped Gloves",
+      "Spiked Gloves",
+      "Two-Toned Boots",
+      "Convoking Wand",
+      "Bone Helmet",
+      "Artillery Quiver",
+      "Marble Amulet",
+      "Seaglass Amulet",
+      "Blue Pearl Amulet",
+      "Iolite Ring",
+      "Vanguard Belt",
+      "Crystal Belt",
+      "Opal Ring",
+      "Steel Ring",
+      "Stygian Vise",
+      "Vermillion Ring",
+      "Grasping Mail",
+      "Sacrificial Garb",
+      "Brimstone Treads",
+      "Stormrider Boots",
+      "Dreamquest Slippers",
+      "Debilitation Gauntlets",
+      "Sinistral Gloves",
+      "Nexus Gloves",
+      "Penitent Mask",
+      "Blizzard Crown",
+      "Archdemon Crown",
+      "Heat-attuned Tower Shield",
+      "Cold-attuned Buckle",
+      "Transfer-attuned Spirit Shield",
+      "Penitent Mask"
+    ],
+    [
+      "Glorious Plate",
+      "Astral Plate",
+      "Titan Greaves",
+      "Titan Gauntlets",
+      "Royal Burgonet",
+      "Eternal Burgonet",
+      "Pinnacle Tower Shield"
+    ],
+    [
+      "Assassin's Garb",
+      "Zodiac Leather",
+      "Slink Boots",
+      "Slink Gloves",
+      "Lion Pelt",
+      "Imperial Buckler"
+    ],
+    [
+      "Vaal Regalia",
+      "Sorcerer Boots",
+      "Sorcerer Gloves",
+      "Hubris Circlet",
+      "Titanium Spirit Shield",
+      "Harmonic Spirit Shield"
+    ],
+    [
+      "Triumphant Lamellar",
+      "Dragonscale Gauntlets",
+      "Archon Kite Shield",
+      "Murder Mitts",
+      "Crusader Gloves"
+    ],
+    [
+      "Cobalt Jewel",
+      "Viridian Jewel",
+      "Crimson Jewel"
+    ],
+    [
+      "Searching Eye Jewel",
+      "Murderous Eye Jewel",
+      "Ghastly Eye Jewel"
+    ],
+    [
+      "Onyx Amulet",
+      "Turquoise Amulet",
+      "Citrine Amulet",
+      "Agate Amulet",
+      "Prismatic Ring",
+      "Two-Stone Ring",
+      "Diamond Ring"
+    ]
+  ]
+}

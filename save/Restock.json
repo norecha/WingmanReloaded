@@ -1,0 +1,566 @@
+﻿[
+  [
+    {
+      "Ignored": "0",
+      "Normal": "0",
+      "Restock": "1",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "Wisdom",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "0",
+      "Restock": "1",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "Portal",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 9,
+      "RestockMin": 3,
+      "RestockName": "Custom",
+      "RestockTo": 4
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    }
+  ],
+  [
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    }
+  ],
+  [
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    }
+  ],
+  [
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    }
+  ],
+  [
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    }
+  ],
+  [
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    }
+  ],
+  [
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    }
+  ],
+  [
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    }
+  ],
+  [
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    }
+  ],
+  [
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    }
+  ],
+  [
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    }
+  ],
+  [
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    },
+    {
+      "Ignored": "0",
+      "Normal": "1",
+      "Restock": "0",
+      "RestockMax": 40,
+      "RestockMin": 20,
+      "RestockName": "",
+      "RestockTo": 30
+    }
+  ]
+]

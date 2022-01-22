@@ -1,0 +1,18 @@
+﻿{
+  "failsafe": {
+    "OHB": {
+      "1": 1209,
+      "2": 429,
+      "3": 138,
+      "4": 1,
+      "Id": "1440 Overhead Health Bar"
+    }
+  },
+  "Toggle": {
+    "Flask": 1,
+    "Move": 1,
+    "PopAll": 0,
+    "Quit": 0,
+    "Utility": 1
+  }
+}
