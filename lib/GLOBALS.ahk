@@ -7,8 +7,6 @@ Global WR_Statusbar := "WingmanReloaded Status"
 Global WR_hStatusbar
 Global PPServerStatus := True
 Global Ninja := {}
-Global Enchantment := []
-Global Corruption := []
 Global InventoryGridX := []
 Global InventoryGridY := []
 Global Bases
@@ -17,6 +15,70 @@ Global GamePID
 Global QuestItems
 Global DelayAction := {}
 Global ProfileMenuFlask,ProfileMenuUtility,ProfileMenuperChar
+Global PoeDBAPI := ["Life Flask"
+,"Mana Flask"
+,"Hybrid Flask"
+,"Amulet"
+,"Ring"
+,"Claw"
+,"Dagger"
+,"Wand"
+,"One Hand Sword"
+,"Thrusting One Hand Sword"
+,"One Hand Axe"
+,"One Hand Mace"
+,"Bow"
+,"Two Hand Sword"
+,"Two Hand Axe"
+,"Two Hand Mace"
+,"Quiver"
+,"Belt"
+,"Gloves(STR)"
+,"Gloves(DEX)"
+,"Gloves(INT)"
+,"Gloves(STR-DEX)"
+,"Gloves(DEX-INT)"
+,"Gloves(STR-INT)"
+,"Boots(STR)"
+,"Boots(DEX)"
+,"Boots(INT)"
+,"Boots(STR-DEX)"
+,"Boots(DEX-INT)"
+,"Boots(STR-INT)"
+,"Body Armour(STR)"
+,"Body Armour(DEX)"
+,"Body Armour(INT)"
+,"Body Armour(STR-DEX)"
+,"Body Armour(DEX-INT)"
+,"Body Armour(STR-INT)"
+,"Helmet(STR)"
+,"Helmet(DEX)"
+,"Helmet(INT)"
+,"Helmet(STR-DEX)"
+,"Helmet(DEX-INT)"
+,"Helmet(STR-INT)"
+,"Shield(STR)"
+,"Shield(DEX)"
+,"Shield(INT)"
+,"Shield(STR-DEX)"
+,"Shield(DEX-INT)"
+,"Shield(STR-INT)"
+,"Sceptre"
+,"Utility Flask"
+,"Cobalt Jewel"
+,"Viridian Jewel"
+,"Crimson Jewel"
+,"Murderous Eye Jewel"
+,"Searching Eye Jewel"
+,"Hypnotic Eye Jewel"
+,"Ghastly Eye Jewel"
+,"Rune Dagger"
+,"Warstaff"
+,"Trinket"
+,"Staff"
+,"Map(LOW)"
+,"Map(MID)"
+,"Map(TOP)"]
 Global Active_executable := "TempName"
 Global selectedLeague := "Standard"
 ; Hybrid Mods First Line
@@ -522,6 +584,14 @@ Global EnableRestock:=True
 Global MoveMapsToArea:=True
 Global YesIncludeFandSItem := True
 
+; Item Crafting
+
+Global ItemCraftingBaseSelector
+Global ItemCraftingMethod
+Global ItemCraftingNumberPrefix
+Global ItemCraftingNumberSuffix
+Global ItemCraftingNumberCombination
+
 ; Chaos Recipe
 Global ChaosRecipeEnableFunction := False
 Global ChaosRecipeUnloadAll := True
@@ -606,83 +676,77 @@ Base.Globe := Array_DeepClone(Globe)
 ; Player
 Global Player := OrderedArray()
 Player.Percent := {"Life":100, "ES":100, "Mana":100}
-; Stash Tabs
+
+
+;Stash Tabs Management
+Global StashTabLinked := 1
+Global StashTabYesLinked := 1
+Global StashTabBrickedMaps := 1
+Global StashTabYesBrickedMaps := 1
+Global StashTabInfluencedItem := 1
+Global StashTabYesInfluencedItem := 1
+Global StashTabCrafting := 1
+Global StashTabYesCrafting := 1
+Global StashTabVeiled := 1
+Global StashTabYesVeiled := 1
+Global StashTabClusterJewel := 1
+Global StashTabYesClusterJewel := 1
+Global StashTabHeistGear := 1
+Global StashTabYesHeistGear := 1
+Global StashTabMiscMapItems := 1
+Global StashTabYesMiscMapItems := 1
+Global StashTabDump := 1
+Global StashTabYesDump := 1
+
+;Priced Tabs Options
+Global StashTabPredictive := 1
+Global StashTabYesPredictive := 0
+Global StashTabYesPredictive_Price := 5
+Global StashTabNinjaPrice := 1
+Global StashTabYesNinjaPrice := 0
+Global StashTabYesNinjaPrice_Price := 5
+
+;Dump Tab Options
+Global StashDumpInTrial := 1
+Global StashDumpSkipJC := 1
+
 ;Affinities
 Global StashTabCurrency := 1
+Global StashTabYesCurrency := 0
 Global StashTabMap := 1
+Global StashTabYesMap := 0
 Global StashTabDivination := 1
+Global StashTabYesDivination := 0
 Global StashTabMetamorph := 1
+Global StashTabYesMetamorph := 0
 Global StashTabFragment := 1
+Global StashTabYesFragment := 0
 Global StashTabEssence := 1
+Global StashTabYesEssence := 0
 Global StashTabBlight := 1
+Global StashTabYesBlight := 0
 Global StashTabDelirium := 1
+Global StashTabYesDelirium := 0
 Global StashTabDelve := 1
+Global StashTabYesDelve := 0
 Global StashTabUnique := 1
+Global StashTabYesUnique := 0
+Global StashTabGem := 1
+Global StashTabYesGem := 0
+Global StashTabFlask := 1
+Global StashTabYesFlask := 0
 
-;Unique Special
+;Unique Logic
 Global StashTabYesUniquePercentage := 0
 Global StashTabUniquePercentage := 70
 Global StashTabYesUniqueRingAll := 0
 Global StashTabYesUniqueDumpAll := 0
 Global StashTabUniqueRing := 1
 Global StashTabUniqueDump := 1
-Global StashTabGem := 1
-Global StashTabGemVaal := 1
-Global StashTabGemQuality := 1
-Global StashTabFlaskQuality := 1
-Global StashTabFlaskAll := 1							 
-Global StashTabLinked := 1
-Global StashTabBrickedMaps := 1
-Global StashTabInfluencedItem := 1
-Global StashTabCrafting := 1
-Global StashTabProphecy := 1
-Global StashTabVeiled := 1
-Global StashTabGemSupport := 1
-Global StashTabClusterJewel := 1
-Global StashTabHeistGear := 1
-Global StashTabMiscMapItems := 1
-Global StashTabDump := 1
-Global StashTabPredictive := 1
-Global StashTabNinjaPrice := 1
-; Checkbox to activate each tab
 
-;Affinities
-Global StashTabYesCurrency := 0
-Global StashTabYesMap := 0
-Global StashTabYesDivination := 0
-Global StashTabYesMetamorph := 0
-Global StashTabYesFragment := 0
-Global StashTabYesEssence := 0
-Global StashTabYesBlight := 0
-Global StashTabYesDelirium := 0
-Global StashTabYesDelve := 0
-Global StashTabYesUnique := 0
-;Unique Special
+;Unique Options
 Global StashTabYesUniqueRing := 1
 Global StashTabYesUniqueDump := 1
-
-Global StashTabYesGem := 1
-Global StashTabYesGemVaal := 1
-Global StashTabYesGemQuality := 1
-Global StashTabYesFlaskQuality := 1
-Global StashTabYesFlaskAll := 1								
-Global StashTabYesLinked := 1
-Global StashTabYesBrickedMaps := 1
-Global StashTabYesInfluencedItem := 1
-Global StashTabYesCrafting := 1
-Global StashTabYesProphecy := 1
-Global StashTabYesVeiled := 1
-Global StashTabYesGemSupport := 1
-Global StashTabYesClusterJewel := 1
-Global StashTabYesHeistGear := 1
-Global StashTabYesMiscMapItems := 1
-Global StashTabYesDump := 1
-Global StashDumpInTrial := 1
-Global StashDumpSkipJC := 1
-Global StashTabYesPredictive := 0
-Global StashTabYesPredictive_Price := 5
-Global StashTabYesNinjaPrice := 0
-Global StashTabYesNinjaPrice_Price := 5
 
 ; Crafting Bases Options
 Global YesStashBasesAboveIlvl := True

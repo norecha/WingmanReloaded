@@ -2,16 +2,20 @@
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Global WR := {"loc":{},"Flask":{},"Utility":{},"perChar":{}
 ,"cdExpires":{},"func":{},"data":{},"String":{},"Restock":{}
-,"CustomCraftingBases":{},"CustomMapMods":{}}
+,"CustomCraftingBases":{},"CustomMapMods":{},"ItemCrafting":{},"ActualTier":{}}
 WR.loc.pixel := {}, WR.loc.area := {}
 WR.data.Counts := {}
 for k, v in ["DetonateDelve", "Detonate", "Gui", "VendorAccept", "DivTrade", "DivItem"
-, "Wisdom", "Portal", "Scouring", "Chisel", "Alchemy", "Chance", "Fusing", "Vaal"
-, "Transmutation", "Augmentation", "Alteration", "Jeweller", "Chromatic", "Binding"
-, "Harbinger", "Horizon", "Engineer", "Chaos", "Regal", "Simple", "Prime", "Awakened"
+, "Wisdom", "Portal", "Blacksmith", "Armourer", "Glassblower", "Gemcutter", "Chisel"
+,"Transmutation","Alteration","Annulment","Chance","Regal","Alchemy","Chaos","Veiled"
+,"Augmentation","Divine"
+,"Jeweler","Fusing","Chromatic","Awakened","Elevated","Harbinger","Horizon"
+,"Enkindling","Ancient","Binding","Engineer","Regret","Unmaking"
+,"Instilling","Scouring","Sacred","Blessed","Vaal"
 , "OnMenu", "OnChar", "OnChat", "OnInventory", "OnStash", "OnVendor", "OnVendorHeist"
 , "OnDiv", "OnLeft", "OnDelveChart", "OnMetamorph", "OnLocker"]
 	WR.loc.pixel[v] := {"X":0,"Y":0}
+
 for k, v in []
 	WR.loc.area[v] := {"X1":0,"Y1":0,"X2":0,"Y2":0}
 WR.cdExpires.Group := {}, WR.cdExpires.Flask := {}, WR.cdExpires.Utility := {}, WR.cdExpires.Binding := {}
@@ -81,9 +85,16 @@ WR.String.General:={"OHB":"|<OHB_Bar>0x241814@0.99$106.Tzzzzzzzzzzzzzzzzu"
 
 WR.CustomCraftingBases.Bases := []
 
-WR.CustomMapMods.CustomMods := [{"Map Modifier":"Monsters have #% chance to Avoid Elemental Ailments","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters have a #% chance to avoid Poison, Blind, and Bleeding","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters reflect #% of Elemental Damage","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters reflect #% of Physical Damage","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players cannot Regenerate Life, Mana or Energy Shield","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Cannot Leech from Monsters","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"-#% maximum Player Resistances","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters fire # additional Projectiles","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters deal #% extra Physical Damage as Fire","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters deal #% extra Physical Damage as Cold","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters deal #% extra Physical Damage as Lightning","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters have #% increased Critical Strike Chance","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters' skills Chain # additional times","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players have #% less Recovery Rate of Life and Energy Shield","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Player chance to Dodge is Unlucky","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters have #% increased Accuracy Rating","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players have #% reduced Chance to Block","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players have #% less Armour","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players have #% less Area of Effect","Mod Type":"Impossible","Weight":"100"}]
+WR.CustomMapMods.MapMods := []
 
-WR.CustomMapMods.Default := [{"Map Modifier":"Monsters have #% chance to Avoid Elemental Ailments","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters have a #% chance to avoid Poison, Blind, and Bleeding","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters reflect #% of Elemental Damage","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters reflect #% of Physical Damage","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players cannot Regenerate Life, Mana or Energy Shield","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Cannot Leech Life from Monsters","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"-#% maximum Player Resistances","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters fire # additional Projectiles","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters deal #% extra Physical Damage as Fire","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters deal #% extra Physical Damage as Cold","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters deal #% extra Physical Damage as Lightning","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters have #% increased Critical Strike Chance","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters' skills Chain # additional times","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players have #% less Recovery Rate of Life and Energy Shield","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Player chance to Dodge is Unlucky","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Monsters have #% increased Accuracy Rating","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players have #% reduced Chance to Block","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players have #% less Armour","Mod Type":"Impossible","Weight":"100"},{"Map Modifier":"Players have #% less Area of Effect","Mod Type":"Impossible","Weight":"100"}]
+
+
+for k,v in PoeDBAPI
+{
+	WR.ItemCrafting[v] := []
+	WR.ActualTier[v] := []
+}
+	
 
 WR.Data.Map_Affixes := RegexReplace(ArrayToString(Util.Load("Affix_List_Map")),"\%","`%")
 WR.Data.Map_Affixes := RegexReplace(WR.Data.Map_Affixes,",","`,")
