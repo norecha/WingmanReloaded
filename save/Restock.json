@@ -1,6 +1,9 @@
 ﻿[
   [
     {
+      "CustomTab": "0",
+      "CustomX": "0",
+      "CustomY": "0",
       "Ignored": "0",
       "Normal": "0",
       "Restock": "1",
@@ -10,6 +13,9 @@
       "RestockTo": 30
     },
     {
+      "CustomTab": "0",
+      "CustomX": "0",
+      "CustomY": "0",
       "Ignored": "0",
       "Normal": "0",
       "Restock": "1",
@@ -19,6 +25,9 @@
       "RestockTo": 30
     },
     {
+      "CustomTab": "0",
+      "CustomX": "0",
+      "CustomY": "0",
       "Ignored": "0",
       "Normal": "1",
       "Restock": "0",
@@ -28,6 +37,9 @@
       "RestockTo": 4
     },
     {
+      "CustomTab": "0",
+      "CustomX": "0",
+      "CustomY": "0",
       "Ignored": "0",
       "Normal": "1",
       "Restock": "0",
