@@ -1,3 +1,13 @@
 ﻿{
-  "Bases": {}
+  "amulet": {},
+  "belt": {},
+  "dex_armour": {},
+  "dex_int_armour": {},
+  "int_armour": {},
+  "quiver": {},
+  "ring": {},
+  "str_armour": {},
+  "str_dex_armour": {},
+  "str_int_armour": {},
+  "weapon": {}
 }

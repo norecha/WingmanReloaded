@@ -25,16 +25,16 @@
       "RestockTo": 30
     },
     {
-      "CustomTab": "0",
-      "CustomX": "0",
-      "CustomY": "0",
+      "CustomTab": "5",
+      "CustomX": "732",
+      "CustomY": "751",
       "Ignored": "0",
-      "Normal": "1",
-      "Restock": "0",
+      "Normal": "0",
+      "Restock": "1",
       "RestockMax": 9,
       "RestockMin": 3,
       "RestockName": "Custom",
-      "RestockTo": 4
+      "RestockTo": 5
     },
     {
       "CustomTab": "0",
