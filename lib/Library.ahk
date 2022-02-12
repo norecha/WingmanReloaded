@@ -7,6 +7,7 @@
 #Include, %A_ScriptDir%\lib\CLASS_Craft.ahk
 #Include, %A_ScriptDir%\lib\CLASS_ItemBuild.ahk
 #Include, %A_ScriptDir%\lib\CLASS_ItemScan.ahk
+#Include, %A_ScriptDir%\lib\CLASS_ModAlias.ahk
 #Include, %A_ScriptDir%\lib\CLASS_Perfect.ahk
 #Include, %A_ScriptDir%\lib\CLASS_Progress_Slider.ahk
 #Include, %A_ScriptDir%\lib\CLASS_RefreshAffixes.ahk
@@ -30,6 +31,7 @@
 #Include, %A_ScriptDir%\lib\TrayLabels.ahk
 #Include, %A_ScriptDir%\lib\Trigger.ahk
 #Include, %A_ScriptDir%\lib\DatabaseHelpers.ahk
+#Include, %A_ScriptDir%\lib\NeverSinkLootFilterModifier.ahk
 
 #Include, %A_ScriptDir%\lib\api\POE_RequestAccount.ahk
 #Include, %A_ScriptDir%\lib\api\POE_RequestStash.ahk
@@ -71,5 +73,6 @@
 #Include, %A_ScriptDir%\lib\routine\PopFlasks.ahk
 #Include, %A_ScriptDir%\lib\routine\QuickPortal.ahk
 #Include, %A_ScriptDir%\lib\routine\StackRelease.ahk
+#Include, %A_ScriptDir%\lib\routine\ZoneChange.ahk
 
 #Include *i %A_ScriptDir%\save\MyCustomLib.ahk
