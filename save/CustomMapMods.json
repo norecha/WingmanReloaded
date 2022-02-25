@@ -23,34 +23,20 @@
     },
     {
       "ID": 4,
-      "Map Affix": "Mirrored",
-      "Map Detail": "Monsters reflect 18% of Elemental Damage",
-      "Mod Type": "Good",
-      "Weight": "10"
-    },
-    {
-      "ID": 5,
-      "Map Affix": "Resistant",
-      "Map Detail": "+25% Monster Chaos Resistance | +40% Monster Elemental Resistance",
-      "Mod Type": "Good",
-      "Weight": "10"
-    },
-    {
-      "ID": 6,
       "Map Affix": "of Enfeeblement",
       "Map Detail": "Players are Cursed with Enfeeble",
       "Mod Type": "Bad",
       "Weight": "10"
     },
     {
-      "ID": 7,
+      "ID": 5,
       "Map Affix": "of Stasis",
       "Map Detail": "Players cannot Regenerate Life, Mana or Energy Shield",
       "Mod Type": "Impossible",
       "Weight": "10"
     },
     {
-      "ID": 8,
+      "ID": 6,
       "Map Affix": "of Exposure",
       "Map Detail": "(-12--9)% maximum Player Resistances",
       "Mod Type": "Impossible",
