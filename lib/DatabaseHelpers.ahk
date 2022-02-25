@@ -70,13 +70,13 @@ FirstLineToWRFormat(FullLine)
 }
 
 CraftingBasesRequest(ShouldRun){
-    If(!ShouldRun){
+    If(!ShouldRun || PoECookie == ""){
         Return
     }
-    If (AccountNameSTR = ""){
-        AccountNameSTR := POE_RequestAccount().accountName
+    If (!AccountNameSTR){
+        AccountNameSTR := PoeRequest.Account()
     }
-    Object := POE_RequestStash(StashTabCrafting,0)
+    Object := PoERequest.Stash(StashTabCrafting)
     ClearQuantCraftingBase()
     Strings := []
     For k, v in Object.items
