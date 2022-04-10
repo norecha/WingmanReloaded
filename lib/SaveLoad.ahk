@@ -10,6 +10,7 @@ readFromFile(){
 	Settings("String","Load")
 	Settings("CustomCraftingBases","Load")
 	Settings("CustomMapMods","Load")
+	Settings("CustomSextantMods","Load")
 	Settings("ItemCrafting","Load")
 	Settings("ActualTier","Load")
 	Settings("MenuDDLselect","Load")
@@ -19,6 +20,7 @@ readFromFile(){
 
 	; Login Information
 	; IniRead, PoECookie, %A_ScriptDir%\save\Account.ini, GGG, PoECookie, %A_Space%
+	IniRead, AccountNameSTR, %A_ScriptDir%\save\Account.ini, GGG, AccountNameSTR, %A_Space%
 	FileRead, temp, %A_ScriptDir%\save\Cookie.json
 	PoECookie := JSON.Load(temp).Cookie
 	temp := ""
@@ -139,8 +141,10 @@ readFromFile(){
 	IniRead, MMapItemRarity, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapItemRarity, 1
 	IniRead, MMapMonsterPackSize, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapMonsterPackSize, 1
 	IniRead, EnableMQQForMagicMap, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, EnableMQQForMagicMap, 0
+	IniRead, MMQorWeight, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMQorWeight, 0
 	IniRead, MMapWeight, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapWeight, 0
 	IniRead, ForceMaxChisel, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, ForceMaxChisel, 0
+	IniRead, SextantDDLSelector, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, SextantDDLSelector, Reroll until Good Match
 
 	;Automation Settings
 	IniRead, YesEnableAutomation, %A_ScriptDir%\save\Settings.ini, Automation Settings, YesEnableAutomation, 0
@@ -621,6 +625,7 @@ submit(){
 		Settings("String","Save")
 		Settings("CustomCraftingBases","Save")
 		Settings("CustomMapMods","Save")
+		Settings("CustomSextantMods","Save")
 		Settings("ItemCrafting","Save")
 		Settings("ActualTier","Save")
 
@@ -714,6 +719,7 @@ submit(){
 
 		Gui, Submit, NoHide
 
+		IniWrite, %AccountNameSTR%, %A_ScriptDir%\save\Account.ini, GGG, AccountNameSTR
 		temp := {"Cookie":PoECookie}
 		t := JSON_Beautify(temp)
 		FileDelete, %A_ScriptDir%\save\Cookie.json
@@ -851,8 +857,10 @@ submit(){
 		IniWrite, %MMapItemRarity%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapItemRarity
 		IniWrite, %MMapMonsterPackSize%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapMonsterPackSize
 		IniWrite, %EnableMQQForMagicMap%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, EnableMQQForMagicMap
+		IniWrite, %MMQorWeight%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMQorWeight
 		IniWrite, %MMapWeight%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, MMapWeight
 		IniWrite, %ForceMaxChisel%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, ForceMaxChisel
+		IniWrite, %SextantDDLSelector%, %A_ScriptDir%\save\Settings.ini, Crafting Map Settings, SextantDDLSelector
 
 		;Affinities
 		IniWrite, %StashTabCurrency%, %A_ScriptDir%\save\Settings.ini, Stash Tab, StashTabCurrency

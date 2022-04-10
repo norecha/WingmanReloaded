@@ -767,9 +767,11 @@ IdentifyRoutine()
 ; ItemInfo - Display information about item under cursor
 ItemInfo(){
 	ItemInfoCommand:
+	ItemParseActive := True
 	MouseGetPos, Mx, My
 	ClipItem(Mx, My)
 	Item.ItemInfo()
+	ItemParseActive := False
 	Return
 }
 ; MoveStash - Input any digit and it will move to that Stash tab
@@ -850,9 +852,10 @@ RunRestock(){
 				Item.Prop.Stack_Size := 0
 			; Store the item stack size
 			InvCount := Item.Prop.Stack_Size
-			
-			If (InvCount < v.RestockMin || InvCount >= v.RestockMax)
-			{
+			If (InvCount = v.RestockTo && v.RestockTo = v.RestockMax) {
+				Continue
+			}
+			If (InvCount < v.RestockMin || InvCount >= v.RestockMax) {
 				If (v.RestockName = "Custom") {
 					MoveStash(v.CustomTab)
 					StockX := v.CustomX
@@ -881,6 +884,8 @@ RunRestock(){
 					dif := v.RestockTo - InvCount
 					If (StashCount < dif) {
 						Notify("Out of Stock","Attempting to restock " v.RestockName " but not enough in stock",2)
+						Continue
+					} Else If (dif = 0) {
 						Continue
 					}
 					ShiftClick(StockX, StockY)

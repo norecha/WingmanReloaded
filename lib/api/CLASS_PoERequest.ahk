@@ -17,6 +17,7 @@ Class PoERequest {
     Static Headers := { "cache-control":"max-age=0", "accept-encoding":"gzip, deflate, br" }
     Headers["cookie"] := PoECookie
     response := Util.HttpGet(Url,Headers)
+    ; Log("Account Response ","Request for account information returned:",response)
     obj := This.HandleResponse(response)
     Return ( obj ? obj.accountName : False )
   }
@@ -26,7 +27,9 @@ Class PoERequest {
     Return This.HandleResponse(response)
   }
   HandleResponse(response){
-    response := RegexReplace(response,"[]","")
+    ; response := RegexReplace(response,"[]","")
+    response := RegexReplace(response,"^[^\]\[\{\}""]*","")
+    response := RegexReplace(response,"[^\]\[\{\}""]*$","")
     Try {
       obj := JSON.Load(response)
       If obj.error {

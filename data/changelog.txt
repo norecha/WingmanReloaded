@@ -1,4 +1,82 @@
-﻿## Version .15.032 - Alpha version - February/19/2021
+﻿## Version .15.0505 - Alpha version - March/23/2022
+Adjustment to Sextant modifier list
+  * All first entries of the mod list are now unique
+  * Uses remaining removed as it was not useful information
+    * Will require reconfigure of Sextant mod list
+    * To fix manually without reconfigure, Replace " | # uses remaining" with blank (nothing) in "save\CustomSextantMods.json" file then reload
+
+---
+
+## Version .15.0504 - Alpha version - March/23/2022
+Improvement to Item crafting
+  * Delay Removed from Item Crafting
+  * Only Required currency for crafting are counted
+  * Sextant Crafting Moved from Map crafting to Item Craft
+    * Allows rolling Voidstones socketed in atlas slot
+    * Mouse over the Voidstone and press item craft key
+    * Requires Atlas, Stash and Inventory Open
+    * To do this, you click the stash then press Atlas key at same time
+
+---
+
+## Version .15.0503 - Alpha version - March/22/2022
+Improvement to map crafting
+  * Add option to Roll Sextant on experimental stage (Only roll atlas stone on inventory using the same map crafting hotkey)
+    * We are using data scraped from POEDB, but as we don't have their endpoint url it was done manually scrapping the page using other tools any update need be manually
+    * Please give a feedback on discord about speed or if is not working as it should
+
+Bugfix
+  * Fix Restock minor bug
+
+---
+
+## Version .15.0502 - Alpha version - March/13/2022
+Improvement to map crafting
+  * The option to enforce MMQ is now default behavior
+  * New option MMQ or Weight to allow either to be considered good
+  * This allows for rolling specific mods but stopping when MMQ is met
+  * EnableMQQForMagicMap option now functional again
+
+Bugfix
+  * Rework how bricked maps are considered onto their own line
+  * Unidentified Corrupted maps not considered bricked if YesMapUnid enabled
+  * Unique Corrupted maps are never considered bricked
+
+---
+
+## Version .15.0501 - Alpha version - March/9/2022
+Improvement to map crafting
+  * You can now force MMQ to affect maps with good mods
+  * This will allow force rolling for specific mods while also above minimum qualities
+  * Log output has been improved to show more details in the basic outcome lines
+
+Adjustments
+  * Adjusted clip routine to add longer delay for error getting clip
+  * Put specific variable for Item Info hotkey for allowing old clip parse
+  * Accountname is now saved/loaded to remove one API request
+    * this also fixes a mysterious issue where AccountName API returns a blank response
+    * If you have this issue, manually enter you accountname into the Save\Account.ini file
+
+---
+
+## Version .15.05 - Master version - March/3/2022
+Bugfix
+  * Resolved issue with stack size having non digits
+
+---
+
+## Version .15.04 - Master version - March/1/2022
+Alpha changes are being merged into master branch
+
+---
+
+## Version .15.033 - Alpha version - February/26/2022
+Bugfix
+  * resolved issue with strange unicode characters in POE accountname api
+
+---
+
+## Version .15.032 - Alpha version - February/19/2022
 Various bugfixes and Adjustments
   * new option to force 20% quality on maps with natural quality
   * Fix for cookie not being input
@@ -7,7 +85,7 @@ Various bugfixes and Adjustments
 
 ---
 
-## Version .15.03 - Master version - February/19/2021
+## Version .15.03 - Master version - February/19/2022
 Alpha changes are being merged into master branch
 
 Improvements to Crafting Bases
@@ -16,7 +94,7 @@ Improvements to Crafting Bases
 
 ---
 
-## Version .15.0201 - Alpha version - February/18/2021
+## Version .15.0201 - Alpha version - February/18/2022
 Various bugfixes and Adjustments
   * Added adjustment for minimum weight in map crafting
   * Changes to how we request API endpoints
@@ -31,7 +109,7 @@ Various bugfixes and Adjustments
 
 ---
 
-## Version .15.02 - Master version - February/10/2021
+## Version .15.02 - Master version - February/10/2022
 Alpha changes are being merged into master branch
 
 Various bugfixes and Adjustments
@@ -42,16 +120,14 @@ Improvements to Crafting Bases
 
 ---
 
-## Version .15.01 - Alpha version - February/05/2021
+## Version .15.01 - Alpha version - February/05/2022
 Bugfixes
   * Rogue harbour vendor accept
   * Sleep timers for some click functions
 
 ---
 
----
-
-## Version .15.00 - Master version - February/05/2021
+## Version .15.00 - Master version - February/05/2022
 Alpha changes are being merged into master branch
 
 Improvements
@@ -71,19 +147,19 @@ Bugfixes
 
 ---
 
-## Version .14.0802 - Alpha version - February/04/2021
+## Version .14.0802 - Alpha version - February/04/2022
 Bugfixes
   * Fix for vendor calibration
   * Still needs seperate calibration of Rogue Harbour
 
 ---
 
-## Version .14.0802 - Alpha version - February/04/2021
+## Version .14.0802 - Alpha version - February/04/2022
 Bugfixes
   * Revert accidental find and replace in Rescale function
   * This should fix issues with standard aspect ratio
 
-## Version .14.08 - Alpha version - February/04/2021
+## Version .14.08 - Alpha version - February/04/2022
 Improvements
   * All currency from the currency tab is now available as a restock option
   
@@ -92,7 +168,7 @@ Bugfixes
 
 ---
 
-## Version .14.07 - Alpha version - February/03/2021
+## Version .14.07 - Alpha version - February/03/2022
 Improvements
   * ItemCrafting now has many FailSafes, checking if base match or if you have select at least one affix on Mod Selector
   * MapCrafting now use DB
@@ -103,7 +179,7 @@ Bugfixes
 
 ---
 
-## Version .14.06 - Alpha version - February/02/2021
+## Version .14.06 - Alpha version - February/02/2022
 Bugfixes
   * Fix Reversed comparators for Item Crafting
 
@@ -112,7 +188,7 @@ Improvements
 
 ---
 
-## Version .14.05 - Alpha version - February/01/2021
+## Version .14.05 - Alpha version - February/01/2022
 Improvements
   * Add Affinities for Flask and Gem
   * Crafting Bases are much easier to select and have a new option to auto increase item lvl as you take more itens
