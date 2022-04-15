@@ -9775,6 +9775,8 @@
       "ModGenerationTypeID": "2"
     }
   ],
+  "HeistBlueprint": {},
+  "HeistContract": {},
   "Helmet(DEX)": [
     {
       "ActualTierName": "ActualTierDEX",
@@ -16324,6 +16326,7 @@
       "ModGenerationTypeID": "1"
     }
   ],
+  "Sextant": {},
   "Shield(DEX)": [
     {
       "ActualTierName": "ActualTierDEX",

@@ -61,7 +61,7 @@
   },
   {
     "Bleed": "0",
-    "CD": "6000",
+    "CD": "4000",
     "Condition": "1",
     "Curse": "0",
     "ES": 0,
@@ -104,7 +104,7 @@
     "MainAttack": "1",
     "MainAttackRelease": "0",
     "Mana": 0,
-    "Move": "0",
+    "Move": "1",
     "Poison": "0",
     "PopAll": "1",
     "ResetCooldownAtEnergyShieldPercentage": "0",
