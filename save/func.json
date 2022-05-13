@@ -1,12 +1,6 @@
 ﻿{
   "failsafe": {
-    "OHB": {
-      "1": 1210,
-      "2": 441,
-      "3": 138,
-      "4": 1,
-      "Id": "1440 Overhead Health Bar"
-    }
+    "OHB": "0"
   },
   "Toggle": {
     "Flask": 1,
