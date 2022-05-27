@@ -1,7 +1,7 @@
 ﻿[
   {
     "Bleed": "0",
-    "CD": "3000",
+    "CD": "10000",
     "Condition": "1",
     "Curse": "0",
     "Enable": "0",
@@ -35,7 +35,7 @@
   },
   {
     "Bleed": "0",
-    "CD": "10000",
+    "CD": "14000",
     "Condition": "1",
     "Curse": "0",
     "Enable": "1",
@@ -52,7 +52,7 @@
     "Ignite": "0",
     "Key": "n",
     "Life": 0,
-    "MainAttack": "0",
+    "MainAttack": "1",
     "MainAttackOnly": "0",
     "MainAttackRelease": "0",
     "Mana": 0,
@@ -61,7 +61,7 @@
     "Poison": "0",
     "PopAll": "0",
     "QS": "0",
-    "SecondaryAttack": "0",
+    "SecondaryAttack": "1",
     "SecondaryAttackRelease": "0",
     "Shock": "0",
     "Slot": 2,
