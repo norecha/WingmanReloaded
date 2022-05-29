@@ -502,6 +502,7 @@ Global AccountNameSTR := ""
 Global ClientLog := "C:\Program Files (x86)\Steam\steamapps\common\Path of Exile\logs\Client.txt"
 Global CurrentLocation := ""
 Global CLogFO
+
 ; ASCII converted strings of images
 Global 1080_HealthBarStr := "|<1080 Overhead Health Bar>0x201614@0.99$106.Tzzzzzzzzzzzzzzzzu"
 , 1440_HealthBarStr := "|<1440 Overhead Health Bar>0x190D11@0.98$138.TzzzzzzzzzzzzzzzzzzzzzyU"
@@ -674,6 +675,11 @@ Global YesSpecial5Link := True
 Global EnableRestock:=True
 Global MoveMapsToArea:=True
 Global YesIncludeFandSItem := True
+
+; CLF Options
+Global YesCLFStrictness := False
+Global CLFStrictnessNumber := 1
+
 
 ; Item Crafting
 
