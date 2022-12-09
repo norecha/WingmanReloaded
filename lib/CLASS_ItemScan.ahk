@@ -300,7 +300,7 @@
 			{
 				This.Prop.AtlasStone := True
 			}
-			If (This.Prop.ItemClass = "Misc Map Items")
+			If (This.Prop.ItemClass = "Misc Map Items" || This.Prop.ItemClass = "Memory")
 			{
 				This.Prop.MiscMapItem := True
 				This.Prop.SpecialType := "Misc Map Item"
@@ -332,6 +332,11 @@
 			{
 				This.Prop.Incubator := True
 				This.Prop.SpecialType := "Incubator"
+			}
+			Else If (This.Prop.ItemBase ~= "Crystallised Lifeforce$")
+			{
+				This.Prop.HarvestCurrency := True
+				This.Prop.SpecialType := "Harvest Currency"
 			}
 			Else If (InStr(This.Prop.ItemBase, "Timeless Karui Splinter") 
 					|| InStr(This.Prop.ItemBase, "Timeless Eternal Empire Splinter") 
@@ -1928,14 +1933,14 @@
 		For key, value in This.Prop
 		{
 			If( RegExMatch(key, "^Required")
-					|| RegExMatch(key, "^Rating")
+				|| RegExMatch(key, "^Rating")
 				|| RegExMatch(key, "^Sockets")
 				|| RegExMatch(key, "^Gem")
 				|| RegExMatch(key, "^Quality")
 				|| RegExMatch(key, "^Map")
 				|| RegExMatch(key, "^Heist_")
 				|| RegExMatch(key, "^Stack")
-			|| RegExMatch(key, "^Weapon"))
+				|| RegExMatch(key, "^Weapon"))
 			{
 				If indexOf(key,this.MatchedCLF)
 					statText .= "CLF⭐"
@@ -2529,6 +2534,8 @@
 		} Else If (StashTabYesNinjaPrice && This.Prop.ChaosValue >= StashTabYesNinjaPrice_Price && !This.Prop.IsMap) {
 			sendstash := StashTabNinjaPrice
 		} Else If (This.Prop.Expedition) {
+			Return -2
+		} Else If (This.Prop.HarvestCurrency) {
 			Return -2
 		} Else If (This.Prop.Heist) {
 			Return -2
