@@ -855,7 +855,7 @@
 			If (RegExMatch(This.Data.Blocks.Properties, "`am)^Reward Rooms Revealed: " rxNum "/" rxNum,RxMatch))
 				This.Prop.Heist_RewardRoomsRevealed := RxMatch1, This.Prop.Heist_RewardRoomsRevealedMax := RxMatch2
 			For k, job in ["Brute Force","Agility","Perception","Demolition","Counter-Thaumaturgy","Trap Disarmament","Deception","Engineering","Lockpicking"] {
-				If (RegExMatch(This.Data.Blocks.Properties, "`am)^Requires " job " \(Level " rxNum "\)",RxMatch)) {
+				If (RegExMatch(This.Data.Blocks.Properties, "`am)^Requires " job " \(Level " rxNum "( \(unmet\))?\)",RxMatch)) {
 					This.Prop["Heist_Requires_" job ] := RxMatch1
 					If (This.Prop.ItemClass == "Contracts"){
 						This.Prop["Heist_Contract_Type"] := job
@@ -985,6 +985,7 @@
 		}
 	}
 	MatchCraftingItemMods() {
+		local preMatch, sufMatch, SumRNP, SumRNS, LastID, SumCombination
 		This.Prop.CraftingMatchedPrefix := 0
 		This.Prop.CraftingMatchedSuffix := 0
 		SumRNP := 0
@@ -1027,10 +1028,21 @@
 			LastID := v["ID"]
 		}
 		SumCombination := This.Prop.CraftingMatchedPrefix + This.Prop.CraftingMatchedSuffix
-		If ((This.Prop.CraftingMatchedPrefix >= ItemCraftingNumberPrefix && This.Prop.CraftingMatchedSuffix >= ItemCraftingNumberSuffix) || (SumCombination >= ItemCraftingNumberCombination && ItemCraftingNumberCombination > 0)){
-			Return True
-		}Else{
-			Return False
+
+		if (ItemCraftingNumberCombination > 0) {
+			return SumCombination >= ItemCraftingNumberCombination
+		} else if (ItemCraftingNumberPrefix > 0 || ItemCraftingNumberSuffix > 0) {
+			if (ItemCraftingNumberPrefix > 0) {
+				preMatch := This.Prop.CraftingMatchedPrefix >= ItemCraftingNumberPrefix
+			} else {
+				preMatch := true
+			}
+			if (ItemCraftingNumberSuffix > 0) {
+				sufMatch := This.Prop.CraftingMatchedSuffix >= ItemCraftingNumberSuffix
+			} else {
+				sufMatch := true
+			}
+			return preMatch && sufMatch
 		}
 	}
 	CreateAllActualTiers()
