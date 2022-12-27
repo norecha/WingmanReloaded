@@ -1,4 +1,4 @@
-﻿Global VersionNumber := .15.0902
+﻿Global VersionNumber := .15.0903
 #Include, %A_ScriptDir%\lib\Header.ahk
 ;REMEMBER TO ENABLE IF PUSHING TO ALPHA/MASTER!!!
 #Include, %A_ScriptDir%\lib\RunAdmin.ahk
@@ -17,8 +17,7 @@ RestockMenu("Load")
 If (YesNinjaDatabase && DaysSince()) {
   DBUpdateNinja()
 } Else {
-  FileRead, JSONtext, %A_ScriptDir%\data\Ninja.json
-  Ninja := JSON.Load(JSONtext)
+  Ninja := JSON.Load(FileOpen(A_ScriptDir "\data\Ninja.json","r").Read())
 }
 ; ActualTierCreator()
 CraftingBasesRequest(YesCraftingBaseAutoUpdateOnStart)
