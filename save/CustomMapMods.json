@@ -2,31 +2,31 @@
   "MapMods": [
     {
       "ID": 1,
-      "Map Affix": "of Exposure",
-      "Map Detail": "(-12--9)% maximum Player Resistances",
+      "Map Affix": "Mirrored",
+      "Map Detail": "Monsters reflect 18% of Elemental Damage",
       "Mod Type": "Impossible",
-      "Weight": "10"
+      "Weight": "1"
     },
     {
       "ID": 2,
       "Map Affix": "of Stasis",
       "Map Detail": "Players cannot Regenerate Life, Mana or Energy Shield",
       "Mod Type": "Impossible",
-      "Weight": "10"
+      "Weight": "1"
     },
     {
       "ID": 3,
-      "Map Affix": "of Fatigue",
-      "Map Detail": "Players have 40% less Cooldown Recovery Rate",
-      "Mod Type": "Bad",
+      "Map Affix": "of Exposure",
+      "Map Detail": "(-12--9)% maximum Player Resistances",
+      "Mod Type": "Impossible",
       "Weight": "1"
     },
     {
       "ID": 4,
-      "Map Affix": "Otherworldly",
-      "Map Detail": "Slaying Enemies close together has a 13% chance to attract monsters from Beyond",
-      "Mod Type": "Bad",
-      "Weight": "10"
+      "Map Affix": "of Insulation",
+      "Map Detail": "Monsters have 70% chance to Avoid Elemental Ailments",
+      "Mod Type": "Impossible",
+      "Weight": "1"
     }
   ]
 }

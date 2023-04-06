@@ -20,7 +20,7 @@
     "movementMainAttack": "0",
     "movementSecondaryAttack": "0",
     "profilesFlask": "leveling",
-    "profilesUtility": "leveling",
+    "profilesUtility": "Default",
     "profilesYesFlask": "1",
     "profilesYesUtility": "1",
     "quitBelow": 20,

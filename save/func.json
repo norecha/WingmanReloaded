@@ -1,15 +1,9 @@
 ﻿{
   "failsafe": {
-    "OHB": {
-      "1": 1210,
-      "2": 462,
-      "3": 140,
-      "4": 1,
-      "Id": "OHB_nore"
-    }
+    "OHB": "0"
   },
   "Toggle": {
-    "Flask": 1,
+    "Flask": 0,
     "Move": 1,
     "PopAll": 0,
     "Quit": 0,
