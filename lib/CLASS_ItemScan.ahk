@@ -366,7 +366,7 @@
 				This.Prop.DeliriumOrb := True
 				This.Prop.SpecialType := "Delirium"
 			}
-			Else If (InStr(This.Prop.ItemBase, "Splinter of") && This.Prop.ItemClass ~= "Fragments")
+			Else If (InStr(This.Prop.ItemBase, "Splinter of") && This.Prop.ItemClass ~= "Stackable Currency")
 			{
 				This.Prop.BreachSplinter := True
 				This.Prop.SpecialType := "Breach Splinter"
@@ -376,7 +376,7 @@
 				This.Prop.ConquererFragment := True
 				This.Prop.SpecialType := "Conquerer Fragment"
 			}
-			Else If (InStr(This.Prop.ItemBase, "Breachstone") && This.Prop.ItemClass ~= "Fragments")
+			Else If (InStr(This.Prop.ItemBase, "Breachstone") && This.Prop.ItemClass ~= "Breachstones")
 			{
 				This.Prop.BreachSplinter := True
 				This.Prop.SpecialType := "Breachstone"
@@ -1095,6 +1095,10 @@
 						If (This.HasAffix(vi)){
 							value := k-ki+1
 							This.Prop[Name] := value
+							if(AffixWRLine[1] == This.Prop.FracturedModKey){
+								Name := "Fractured" . Name
+								This.Prop[Name] := value
+							}
 							break
 						}
 					}
@@ -2668,12 +2672,14 @@
 		{
 			If (Groups.GroupType) {
 				AuxStrictness := (Groups["Strictness"]?Groups["Strictness"]:0)
-				If (val := This.MatchGroup(Groups) && (!YesCLFStrictness || (YesCLFStrictness && CLFStrictnessNumber >= AuxStrictness))){
-					this.Prop.CLF_Tab := Groups["StashTab"]
-					this.Prop.CLF_Group := (Groups["GroupName"]?Groups["GroupName"]:GKey)
-					this.Prop.CLF_Strictness := AuxStrictness
-					This.MatchedCLF := val
-					Return this.Prop.CLF_Tab
+				If (val := This.MatchGroup(Groups)){
+					If(CLFStrictnessNumber <= AuxStrictness){
+						this.Prop.CLF_Tab := Groups["StashTab"]
+						this.Prop.CLF_Group := (Groups["GroupName"]?Groups["GroupName"]:GKey)
+						this.Prop.CLF_Strictness := AuxStrictness
+						This.MatchedCLF := val
+						Return this.Prop.CLF_Tab
+					}
 				}
 			} Else {
 				this.MatchedCLF := []
