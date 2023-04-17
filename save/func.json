@@ -3,10 +3,10 @@
     "OHB": "0"
   },
   "Toggle": {
-    "Flask": 0,
+    "Flask": 1,
     "Move": 1,
     "PopAll": 0,
-    "Quit": 0,
+    "Quit": 1,
     "Utility": 1
   }
 }
